@@ -1,6 +1,11 @@
 # Challenges
 Container repo for programming challenges.
 
+## List of Challenge pages
+- [CodeChef.com](https://www.codechef.com/problems/easy/)
+- [programmingpraxis](https://programmingpraxis.com/)
+- [Reddit - Challenges](https://www.reddit.com/r/dailyprogrammer/)
+
 ## Implemented Challenges
 
 - [CPU simulation](CPU-Simulation/)
