@@ -49,7 +49,7 @@ for day in range(0, days_of_simulation + 1):
 
     # Print current values of lifetime fish array
     for idx in range(0, 9):
-        print(lifetime[(lifetime_ptr + idx)%9], end='')
+        print(lifetime[(lifetime_ptr + idx)%9], " ", end='')
     print()
 
 # Count fish for each remaining lifetime
