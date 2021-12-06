@@ -17,12 +17,11 @@
 fdata = open("input.txt", 'r')
 # fdata = open("input1.txt", 'r')
 
-lanfish_timers = [int(i) for i in fdata.readline().rstrip().split(',')]
-print(lanfish_timers)
 
 # init lifetime array
 lifetime = [0 for i in range(0, 9)]
-for t in lanfish_timers:
+fish_data = [int(i) for i in fdata.readline().rstrip().split(',')]
+for t in fish_data:
     lifetime[t] += 1
 
 print("lifetime:", [i for i in range(0, 9)])
