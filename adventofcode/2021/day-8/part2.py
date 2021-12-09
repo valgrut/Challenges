@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
-fdata = open("input.txt", 'r')
-# fdata = open("input1.txt", 'r')
+# fdata = open("input.txt", 'r')
+fdata = open("input1.txt", 'r')
 
 appear = 0
 for line in fdata:
