@@ -39,8 +39,8 @@ def getSurrounding(board, x, y):
     return surrounding
 
 
-# fdata = open("input.txt", 'r')
-fdata = open("input1.txt", 'r')
+fdata = open("input.txt", 'r')
+# fdata = open("input1.txt", 'r')
 # fdata = open("simple.txt", 'r')
 
 # Load data
@@ -61,9 +61,9 @@ for line in range(0, len(octopuses)):
     print("")
 print("")
 
-
+sum_of_flashes = 0
 # For X steps:
-simulation_time = 2
+simulation_time = 100
 for i in range(0, simulation_time):
 
     # One step
@@ -72,78 +72,45 @@ for i in range(0, simulation_time):
         for idx in range(0, len(octopuses[0])):
             # new = False
             octopuses[line][idx] += 1
-
-    # Calculate flashing neighbourhood - probably while over_nine is not empty:
-    # TODO: probably while new values are above 9, loop smthg like this
     
-    toprocess = []
-    processed = []
-    while len(toprocess):
-        print("fill above nines")
+    # While there are still new enpowered (over 9) octopuses
+    new_over_nine = []
+    processed = []  # processed cells with value greater than 9
+    new_found = True
+    while new_found is True:
+        new_found = False
+        # Fill all new over 9
+        # print("fill above nines")
         for line in range(0, len(octopuses)):
             for idx in range(0, len(octopuses[0])):
                 if octopuses[line][idx] > 9:
-                    if (line, idx) not in toprocess and (line, idx) not in processed:
-                        toprocess.append((line, idx))
-                        # surrounding = getSurrounding(octopuses, line, idx)
-                        # for sur in surrounding:
-                            # octopuses[sur[0]][sur[1]] += 1
-                            # if sur not in procesed and sur not in toprocess:
-                                # toprocess.append(sur)
+                    if (line, idx) not in processed:
+                        new_over_nine.append((line, idx))
+                        new_found = True
+                        
+        # print(len(new_over_nine), new_over_nine)
+        
+        # increase neighbours energy level
+        for newover in new_over_nine[:]:
+            surrounding = getSurrounding(octopuses, newover[0], newover[1])
+            for sur in surrounding:
+                octopuses[sur[0]][sur[1]] += 1
 
-        print(len(toprocess), toprocess)
-        for oc in toprocess[:]:
-            if octopuses[oc[0]][oc[1]] > 9:
-                surrounding = getSurrounding(octopuses, oc[0], oc[1])
-                for sur in surrounding:
-                    octopuses[sur[0]][sur[1]] += 1
-                    if sur not in procesed and sur not in toprocess:
-                        toprocess.append(sur)
+            # Remove currently processed cell
+            processed.append(newover)
+            new_over_nine.remove(newover)
+        # print(len(processed), processed)
 
-                processed.append(oc)
-                toprocess.remove(oc)
-                # some_over_nine = True
-        print(len(processed), processed)
-
-    print(len(processed), processed)
+    
+    # print(len(processed), processed)
     for pd in processed:
         if octopuses[pd[0]][pd[1]] > 9:
             octopuses[pd[0]][pd[1]] = 0
 
-        
-
-    # initial over-nine values
-    # over_nine = []
-    # new_nine = True
-    # while new_nine is True:
-    #     some_over_nine = False
-    #     for line in range(0, len(octopuses)):
-    #         for idx in range(0, len(octopuses[0])):
-    #             if octopuses[line][idx] > 9:
-    #                 some_over_nine = True
-    #                 if (line, idx) not in over_nine:
-    #                     over_nine.append((line, idx))
-    #                     surrounding = getSurrounding(octopuses, line, idx)
-    #                     for sur in surrounding:
-    #                         octopuses[sur[0]][sur[1]] += 1
-    #                     new_nine = True
-    #                 else:
-    #                     new_nine = False
-    #     # Prevent infinite loop if no new value over nine was found
-    #     if some_over_nine is False:
-    #         break
-
-
-    # maybe endwhile
-    # todo: probably mark all cels with some tag, representing that they were not flashing and flash only if they were not flashing this step.
-
-    # Filter duplicates
-    # over_nine = list(set(over_nine))
-
-
-    # Now flash all over 9
-    # for flash in over_nine:
-        # octopuses[flash[0]][flash[1]] = 0
+    # Discharge all over 9
+    sum_of_flashes += len(processed)
+    for octopus in processed:
+        octopuses[octopus[0]][octopus[1]] = 0
     
     # Print board
     for line in range(0, len(octopuses)):
@@ -152,6 +119,6 @@ for i in range(0, simulation_time):
         print("")
     print("")
 
-
+print(sum_of_flashes)
 
 fdata.close()
