@@ -39,8 +39,8 @@ def getSurrounding(board, x, y):
     return surrounding
 
 
-# fdata = open("input.txt", 'r')
-fdata = open("input1.txt", 'r')
+fdata = open("input.txt", 'r')
+# fdata = open("input1.txt", 'r')
 # fdata = open("simple.txt", 'r')
 
 # Load data
@@ -63,9 +63,10 @@ print("")
 
 sum_of_flashes = 0
 # For X steps:
-simulation_time = 200
-for time in range(1, simulation_time+1):
-
+flashed_simultaneously = False
+simulation_time = 1
+# for time in range(1, simulation_time+1):
+while flashed_simultaneously is False:
     # One step
     # Increase all energy by 1 level
     for line in range(0, len(octopuses)):
@@ -111,15 +112,21 @@ for time in range(1, simulation_time+1):
     sum_of_flashes += len(processed)
     for octopus in processed:
         octopuses[octopus[0]][octopus[1]] = 0
-    
+
     # Print board
-    print("Simulation step:", time)
+    print("Simulation step:", simulation_time)
     for line in range(0, len(octopuses)):
         for idx in range(0, len(octopuses[0])):
             print("%-3d" % octopuses[line][idx], end='')
         print("")
     print("")
 
-print(sum_of_flashes)
+    if len(processed) == len(octopuses) * len(octopuses[0]):
+        flashed_simultaneously = True
+        break
 
-fdata.close()
+    simulation_time += 1
+
+print("sum of flashes", sum_of_flashes)
+print("sync time step",simulation_time)
+
