@@ -117,7 +117,8 @@ while flashed_simultaneously is False:
     print("Simulation step:", simulation_time)
     for line in range(0, len(octopuses)):
         for idx in range(0, len(octopuses[0])):
-            print("%-3d" % octopuses[line][idx], end='')
+            print("%d" % octopuses[line][idx], end='')
+            # print("%-3d" % octopuses[line][idx], end='')
         print("")
     print("")
 

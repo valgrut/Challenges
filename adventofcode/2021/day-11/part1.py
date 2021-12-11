@@ -116,7 +116,8 @@ for time in range(1, simulation_time+1):
     print("Simulation step:", time)
     for line in range(0, len(octopuses)):
         for idx in range(0, len(octopuses[0])):
-            print("%-3d" % octopuses[line][idx], end='')
+            print("%d" % octopuses[line][idx], end='')
+            # print("%-3d" % octopuses[line][idx], end='')
         print("")
     print("")
 
