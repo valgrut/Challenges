@@ -1,6 +1,40 @@
+#! /usr/sbin/env python3
 
+fdata = open("input_19.txt", 'r')
 
-fdata = open("input1.txt", 'r')
+def recursive(level, node, current_closed):
+    # print()
+    # print(level, "Recursion for ", node)
+    # print(level, "current stack: ", rstack)
+    # print(level, "current closed: ", current_closed)
+    
+    # init values for this recursion level
+    closed = current_closed.copy()
+    rstack.append(node)
+    top = node
+    # if currently pushed node is "end", print and pop()
+    if node == "end":
+        print(level, ">> Found path", rstack)
+        # print(level, "Returning.")
+        rstack.pop()
+        return
+
+    # do closed pouze pokud to je 'lowercase'
+    if top.islower():
+        # print(level, " ", top, "appended to closed")
+        closed.append(top)
+    
+    # print("where to go from (",top,"):", graph[top], " | ", closed)
+    for next in graph[top]:
+        # if top is not on closed yet
+        # print(level, "Next in graph is ", next, ". Is in closed?", next in closed)
+        if next not in closed:
+            # print(level, "Going from ", top, "to ", next)
+            recursive(level+1, next, closed)
+            # print(level, "Back from ", next, " in ", top)
+    # maybe here remove this node from stack (TOP)
+    rstack.pop()
+
 
 # Initiate graph nodes and connect them in both directions
 graph = {}
@@ -12,38 +46,15 @@ for line in fdata:
         graph[conn[1]] = []
     graph[conn[0]].append(conn[1])
     graph[conn[1]].append(conn[0])
-    
+ 
+outer_closed = []
+rstack = []
 
-# BFS (or should I use DFS?)
-# mozna ten rekurzivni alg. se stackem, ze na vrcholu je vzdy vlastne jen jeden stav.
-closed = []
-paths = []
-current_path = []
-stack = []
-stack.append("start")
-closed.append("start")
-while len(stack) > 0:
-    top = stack.pop()
-    current_path.append(top)
-    # print("top", top)
-    # print("closed", closed)
+recursive(1, "start", outer_closed.copy())
 
-    if top == "end":
-        # save this path
-        print("path found:", current_path)
-        currentpath = []
-        print(stack)
-        print(closed)
-        # closed = ["start"]
-        continue
 
-    for next_node in graph[top]:
-        if next_node.islower():
-            if next_node not in closed:
-                stack.append(next_node)
-                closed.append(next_node)
-        else:
-            if next_node not in closed:
-                stack.append(next_node)
 
-    
+
+
+
+
