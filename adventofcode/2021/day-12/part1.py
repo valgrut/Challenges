@@ -1,5 +1,6 @@
 #! /usr/sbin/env python3
 
+# TODO: Revert back to working part1.py for part 1 !!!!!
 
 def recursive(level, node, current_closed, twice_explored):
     explored = False
