@@ -1,7 +1,10 @@
 #! /usr/sbin/env python3 
 
-fdata = open("input.txt", 'r')
-# fdata = open("input1.txt", 'r')
+import copy
+
+
+# fdata = open("input.txt", 'r')
+fdata = open("input1.txt", 'r')
 
 template = fdata.readline().rstrip()
 
@@ -34,13 +37,11 @@ for idx in range((len(template) - 1)):
 
 # print(polymer_counter)
 
-import copy
-
-iterations = 10
+iterations = 1
 for it in range(iterations):
     tmp_counter = {}
     # print()
-    # print("Iteration",it)
+    print("Iteration", it)
     deep_copy = copy.deepcopy(polymer_counter)
     # print("Deep copy len: ", len(deep_copy))
     for pair in deep_copy:
@@ -58,10 +59,13 @@ for it in range(iterations):
             polymer_counter[new_pair_1] = 0
         if new_pair_2 not in polymer_counter:
             polymer_counter[new_pair_2] = 0
-
+    
+        print("before addition and subb: ", polymer_counter)
         polymer_counter[new_pair_1] += tmp
         polymer_counter[new_pair_2] += tmp
+        #print(polymer_counter)
         polymer_counter[pair] -= tmp
+        print("after addition and subb: ", polymer_counter)
     
     # print(polymer_counter)
     # print(polymer_duplicates)
@@ -75,7 +79,7 @@ for pair in polymer_counter:
 for p in polymer_duplicates:
     polymers[p] -= polymer_duplicates[p]
 
-print(polymers)
+print("polymer numbers:", polymers)
 
 most_common = max(polymers, key=polymers.get)
 least_common = min(polymers, key=polymers.get)

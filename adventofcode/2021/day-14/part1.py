@@ -1,8 +1,8 @@
 #! /usr/sbin/env python3 
 
 
-fdata = open("input.txt", 'r')
-# fdata = open("input1.txt", 'r')
+# fdata = open("input.txt", 'r')
+fdata = open("input1.txt", 'r')
 
 
 template = fdata.readline().rstrip()
@@ -26,9 +26,9 @@ print(template)
 print(polymers)
 
 # Process template
-iterations = 10
+iterations = 1
 for it in range(iterations):
-    print("Iteration",it) 
+    print("Iteration", it)
     new = ""
     for idx in range((len(template) - 1)):
         current = template[idx] + template[idx + 1]
@@ -38,7 +38,8 @@ for it in range(iterations):
             new += (rules[current] + template[idx + 1])
 
     template = new
-    print(len(template))
+    print(polymers)
+    print("Len of current template:", len(template))
 
 
 for p in template:
