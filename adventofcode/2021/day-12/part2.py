@@ -62,10 +62,6 @@ def recursive(level, node, current_closed):
     elif is_something_twice(rstack) is False and node not in rstack:
         rstack.append(node)
 
-    # # Current node is already twice on stack, so third is not allowed.
-    # elif is_node_twice(rstack, node) is True:
-    #     return
-
     elif is_something_twice(rstack) is True and node not in rstack:
         rstack.append(node)
         closed.append(node)
