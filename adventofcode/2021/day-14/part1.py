@@ -26,7 +26,7 @@ print(template)
 print(polymers)
 
 # Process template
-iterations = 1
+iterations = 10
 for it in range(iterations):
     print("Iteration", it)
     new = ""
@@ -38,13 +38,12 @@ for it in range(iterations):
             new += (rules[current] + template[idx + 1])
 
     template = new
-    print(polymers)
     print("Len of current template:", len(template))
 
 
 for p in template:
     polymers[p] += 1
-print(polymers)
+print("Final polymers:", polymers)
 
 most_common = max(polymers, key=polymers.get)
 least_common = min(polymers, key=polymers.get)

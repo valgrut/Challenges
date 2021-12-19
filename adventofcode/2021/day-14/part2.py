@@ -27,7 +27,7 @@ for line in fdata:
         polymer_duplicates[end.strip()] = 0
 
 # print(template)
-# print(polymers)
+print("Initial polymers", polymers)
 
 # init counters and duplicate polymers
 polymer_counter = {}
@@ -35,18 +35,29 @@ for idx in range((len(template) - 1)):
     current = template[idx] + template[idx + 1]
     polymer_counter[current] = 1
 
-# print(polymer_counter)
+    # Additional duplicate is needed to account while initial
+    # template is parsed, since it is parsed by 2 polymers,
+    # so there is duplication while initiating polymer counter.
+    # i.e. NNBC -> NN, NB, BC, where N and B are duplicated.
+    if idx < len(template) - 2:
+        polymer_duplicates[template[idx + 1]] += 1
 
-iterations = 1
+print("Initial polymer counters", polymer_counter)
+print("Initial polymer duplications", polymer_duplicates)
+
+iterations = 10
 for it in range(iterations):
     tmp_counter = {}
-    # print()
+    print()
     print("Iteration", it)
     deep_copy = copy.deepcopy(polymer_counter)
+
     # print("Deep copy len: ", len(deep_copy))
     for pair in deep_copy:
+        # print("current pair:", pair)
+
         tmp = deep_copy[pair]
-        
+
         # print("polymer_counter[pair] is ", pair, polymer_counter[pair])
         new_pair_1 = pair[0] + rules[pair]
         new_pair_2 = rules[pair] + pair[1]
@@ -60,12 +71,12 @@ for it in range(iterations):
         if new_pair_2 not in polymer_counter:
             polymer_counter[new_pair_2] = 0
     
-        print("before addition and subb: ", polymer_counter)
+        # print("before addition and subb: ", polymer_counter)
         polymer_counter[new_pair_1] += tmp
         polymer_counter[new_pair_2] += tmp
-        #print(polymer_counter)
+        # print(polymer_counter)
         polymer_counter[pair] -= tmp
-        print("after addition and subb: ", polymer_counter)
+        # print("after addition and subb: ", polymer_counter)
     
     # print(polymer_counter)
     # print(polymer_duplicates)
