@@ -3,8 +3,8 @@
 import copy
 
 
-# fdata = open("input.txt", 'r')
-fdata = open("input1.txt", 'r')
+fdata = open("input.txt", 'r')
+# fdata = open("input1.txt", 'r')
 
 template = fdata.readline().rstrip()
 
@@ -26,14 +26,17 @@ for line in fdata:
         polymers[end.strip()] = 0
         polymer_duplicates[end.strip()] = 0
 
-# print(template)
+print(template)
 print("Initial polymers", polymers)
 
 # init counters and duplicate polymers
 polymer_counter = {}
 for idx in range((len(template) - 1)):
     current = template[idx] + template[idx + 1]
-    polymer_counter[current] = 1
+    if current not in polymer_counter:
+        polymer_counter[current] = 1
+    else:
+        polymer_counter[current] += 1
 
     # Additional duplicate is needed to account while initial
     # template is parsed, since it is parsed by 2 polymers,
@@ -42,28 +45,24 @@ for idx in range((len(template) - 1)):
     if idx < len(template) - 2:
         polymer_duplicates[template[idx + 1]] += 1
 
-print("Initial polymer counters", polymer_counter)
+print("Initial polymer counters", polymer_counter, len(polymer_counter))
 print("Initial polymer duplications", polymer_duplicates)
 
-iterations = 10
+iterations = 40
 for it in range(iterations):
     tmp_counter = {}
-    print()
-    print("Iteration", it)
+
+    # We don't want to update list under our hands.
     deep_copy = copy.deepcopy(polymer_counter)
 
-    # print("Deep copy len: ", len(deep_copy))
     for pair in deep_copy:
-        # print("current pair:", pair)
-
         tmp = deep_copy[pair]
 
-        # print("polymer_counter[pair] is ", pair, polymer_counter[pair])
         new_pair_1 = pair[0] + rules[pair]
         new_pair_2 = rules[pair] + pair[1]
-        
-        # print("new pairs: ", new_pair_1, new_pair_2)
-        
+
+        # Add as many duplicates as number of same pair
+        # i.e. (number of 'CD' = 8, rule: CD->H => add 8 duplicates of H)
         polymer_duplicates[rules[pair]] += tmp
         
         if new_pair_1 not in polymer_counter:
@@ -71,15 +70,10 @@ for it in range(iterations):
         if new_pair_2 not in polymer_counter:
             polymer_counter[new_pair_2] = 0
     
-        # print("before addition and subb: ", polymer_counter)
         polymer_counter[new_pair_1] += tmp
         polymer_counter[new_pair_2] += tmp
-        # print(polymer_counter)
         polymer_counter[pair] -= tmp
-        # print("after addition and subb: ", polymer_counter)
-    
-    # print(polymer_counter)
-    # print(polymer_duplicates)
+
 
 # Count polymers
 for pair in polymer_counter:
@@ -90,12 +84,9 @@ for pair in polymer_counter:
 for p in polymer_duplicates:
     polymers[p] -= polymer_duplicates[p]
 
-print("polymer numbers:", polymers)
-
+# Find least and most common values
 most_common = max(polymers, key=polymers.get)
 least_common = min(polymers, key=polymers.get)
-print(most_common, least_common, polymers[most_common], polymers[least_common])
 print(polymers[most_common] - polymers[least_common])
-
 
 fdata.close()

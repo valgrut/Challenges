@@ -1,8 +1,8 @@
 #! /usr/sbin/env python3 
 
 
-# fdata = open("input.txt", 'r')
-fdata = open("input1.txt", 'r')
+fdata = open("input.txt", 'r')
+# fdata = open("input1.txt", 'r')
 
 
 template = fdata.readline().rstrip()
@@ -26,7 +26,7 @@ print(template)
 print(polymers)
 
 # Process template
-iterations = 10
+iterations = 2
 for it in range(iterations):
     print("Iteration", it)
     new = ""
