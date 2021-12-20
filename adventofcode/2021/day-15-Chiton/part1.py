@@ -11,10 +11,16 @@ if __name__ == "__main__":
         board.append([int(i) for i in line])
 
     print(board)
-
-    risc = 0
     size_x = len(board[0])
     size_y = len(board)
+
+    risc = 0
+
+    # Dijkstra
+    initial_node = (0, 0)
+    target_node = (size_x-1, size_y-1)
+
+    
 
     # BFS
     opened = []
