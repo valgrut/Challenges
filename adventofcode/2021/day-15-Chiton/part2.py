@@ -55,7 +55,6 @@ if __name__ == "__main__":
     # board[initial_node[0]][initial_node[1]][2] = get_difficulty(initial_node[0], initial_node[1])
     board[initial_node[0]][initial_node[1]][2] = 0
 
-    # Alg
     current = initial_node
 
     found = False
