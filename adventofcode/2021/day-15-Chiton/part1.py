@@ -52,7 +52,7 @@ if __name__ == "__main__":
     initial_node = (0, 0)
     target_node = (size_x-1, size_y-1)
 
-    # board[initial_node[0]][initial_node[1]][2] = get_difficulty(initial_node[0], initial_node[1])
+    # Initial position is considered unvisited, so init as 0.
     board[initial_node[0]][initial_node[1]][2] = 0
 
     # Alg
