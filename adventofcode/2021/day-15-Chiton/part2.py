@@ -44,8 +44,8 @@ def increase_difficulty(cave, increase_level):
 
 
 if __name__ == "__main__":
-    fdata = open("input1.txt", 'r')
-    # fdata = open("input.txt", 'r')
+    # fdata = open("input1.txt", 'r')
+    fdata = open("input.txt", 'r')
 
     # Load data into 2d list
     board = []
@@ -111,6 +111,13 @@ if __name__ == "__main__":
                 tentative_distance = get_distance(x, y) + get_difficulty(x + 1, y)
                 if tentative_distance < get_distance(x+1, y):
                     board[x+1][y][2] = tentative_distance
+        # Left
+        if x - 1 >= 0:
+            if is_visited(x-1, y) is False:
+                new_distance = 0
+                tentative_distance = get_distance(x, y) + get_difficulty(x - 1, y)
+                if tentative_distance < get_distance(x-1, y):
+                    board[x-1][y][2] = tentative_distance
 
         # Neighbour Below
         if y+1 < size_y:
@@ -118,6 +125,13 @@ if __name__ == "__main__":
                 tentative_distance = get_distance(x, y) + get_difficulty(x, y + 1)
                 if tentative_distance < get_distance(x, y + 1):
                     board[x][y + 1][2] = tentative_distance
+
+        # Up
+        if y - 1 >= 0:
+            if is_visited(x, y - 1) is False:
+                tentative_distance = get_distance(x, y) + get_difficulty(x, y - 1)
+                if tentative_distance < get_distance(x, y - 1):
+                    board[x][y - 1][2] = tentative_distance
 
         # Mark current node as Visited
         board[x][y][1] = True
