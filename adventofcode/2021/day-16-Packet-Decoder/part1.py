@@ -32,6 +32,7 @@ if __name__ == "__main__":
     # TODO: Poznamka: mozna cele while dat do funkce, a udelat zpracovani treba pro nejaky segment vstupniho packetu -
     # jakoze z celeho packetu treba vim, ze nasledujichich X bitu jsou subpackety, takze predam od aktualniho po X bity
     # teto funkci, a ona to rozparsuje.
+    # TODO: Nebo parsovani jednotlivych sub packetu vyclenit do funkci. Nakreslit si to.
 
     next = "start"
     # while next is not "end" or pointer < len(bin_packet)-1:
