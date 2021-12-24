@@ -17,15 +17,8 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
 
     pointer = pointer_position
 
-    # # jen docasna promenna pro testovani groups - nebude fungovat pro zanorene
     groups_value = ""
-    # subs = 0
-    # max_sub_pointer = 0
 
-    # TODO: Poznamka: mozna cele while dat do funkce, a udelat zpracovani treba pro nejaky segment vstupniho packetu -
-    # jakoze z celeho packetu treba vim, ze nasledujichich X bitu jsou subpackety, takze predam od aktualniho po X bity
-    # teto funkci, a ona to rozparsuje.
-    # TODO: Nebo parsovani jednotlivych sub packetu vyclenit do funkci. Nakreslit si to.
 
     # Determine, if we will parse N sub packets or X bits of subpackets
     sentinel = 0
@@ -35,14 +28,12 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
         sentinel = len(bin_packet)-1
 
     next = "start"
-    # while next is not "end" or pointer < len(bin_packet)-1:
-    # while pointer < sentinel:
     while pointer < sentinel:
-        print("ptr", pointer, '<', sentinel)
+        # print("ptr", pointer, '<', sentinel, " Next=", next)
         if next == "start":
             print()
             print(">START")
-            print("Mam jeste pokracoval????", pointer, sentinel)
+            #print("Mam jeste pokracoval????", pointer, sentinel)
             if sentinel <= pointer + 6:
                 break
             next = "version"
@@ -118,7 +109,7 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
             for i in range(4):
                 group += bin_packet[pointer]
                 pointer += 1
-            print(group)
+            # print(group)
             groups_value += group
 
             int_type = int(group, 2)
@@ -134,11 +125,15 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
             
 
             # experimental - for subpackets
-            print('len(bin_packet)', len(bin_packet), 'pointer:', pointer, 'sentinel:', sentinel)
+            # print('len(bin_packet)', len(bin_packet), 'pointer:', pointer, 'sentinel:', sentinel)
             # if subs > 0 or max_sub_pointer > pointer:
             #     print("to start again")
             #     next = "start"
             # else:
+            #     break
+
+            # print("Mam jeste pokracoval????", pointer, sentinel)
+            # if sentinel <= pointer + 6:
             #     break
 
             if pointer < sentinel:
@@ -158,7 +153,8 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
 
             total_len = int(total_len_of_subpackets, 2)
             max_sub_pointer = pointer + total_len  # experimental
-            print("total_length_of_subpackets", total_len)
+            
+            # print("total_length_of_subpackets", total_len)
             # print(pointer, max_sub_pointer)
             
             pointer = parse_packet(pointer, bit_length=max_sub_pointer + 1)
@@ -176,7 +172,7 @@ def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):
             num_of_subs = int(number_of_subpackets, 2)
             subs = num_of_subs
 
-            print("number_of_subpackets", num_of_subs)
+            # print("number_of_subpackets", num_of_subs)
 
             for i in range(subs):
                 pointer = parse_packet(pointer)
@@ -199,10 +195,14 @@ if __name__ == "__main__":
     # fdata = open("input_3.txt", 'r')  # should have total value of 23
     # fdata = open("input_4.txt", 'r')  # should have total value of 31   # OK
     fdata = open("input.txt", 'r')
-
-
     packet = fdata.readline().rstrip()
-    print(packet)
+    # print(packet)
+
+    # packet = "C200B40A82"
+    # packet = "04005AC33890"
+    # packet = "880086C3E88112"
+    # packet = "CE00C43D881120"
+    # packet = "D8005AC2A8F0"
 
     # 1. convert to bin
     integer = int(packet, 16)
