@@ -12,10 +12,10 @@ def parse_packet(pointer_start):
 
     pointer = pointer_start
 
+    final_group = ""
     return_values = []
     pkt_id = ""
     pkt_version = ""
-    subpackets_limit = ""
 
     next = "start"
     while next != "end":
@@ -34,7 +34,7 @@ def parse_packet(pointer_start):
                 pointer += 1
             
             logging.info("Version %d" % int(version, 2))
-            pkt_version = version
+            pkt_version = int(version, 2)
             next = "type"
 
         # TYPE
@@ -47,12 +47,8 @@ def parse_packet(pointer_start):
 
             int_type = int(type, 2)
             logging.debug("Type: %d" % int_type)
-            if pkt_id == "":
-                pkt_id = int_type
-
-            # Set limit of sub-packets for operations <, >, ==
-            if pkt_id in [5, 6, 7]:
-                subpackets_limit = 2
+            
+            pkt_id = int_type
 
             if int_type == 4:
                 next = "type4"
@@ -77,10 +73,10 @@ def parse_packet(pointer_start):
             for i in range(4):
                 group += bin_packet[pointer]
                 pointer += 1
-
-            int_type = int(group, 2)
-            return_values.append(int_type)
-            logging.debug("Group %d" % int_type)
+            
+            # Append group part into the final_group for 
+            # evaluation in GROUP LAST.
+            final_group += group
 
             next = "type4"
 
@@ -91,10 +87,14 @@ def parse_packet(pointer_start):
             for i in range(4):
                 group += bin_packet[pointer]
                 pointer += 1
+            
+            final_group += group
 
-            int_type = int(group, 2)
+            int_type = int(final_group, 2)
             return_values.append(int_type)
             logging.debug("Last Group %d" % int_type)
+
+            final_group = ""
 
             next = "end"
 
@@ -102,7 +102,6 @@ def parse_packet(pointer_start):
         elif next == "end":
             logging.info(">END")
             break
-
 
         # Packet Type: Operator
         elif next == "operator":
@@ -127,20 +126,10 @@ def parse_packet(pointer_start):
             total_len = int(total_len_of_subpackets, 2)
             max_sub_pointer = pointer + total_len
             
-            # print("total_length_of_subpackets", total_len)
-            # print(pointer, max_sub_pointer)
-            print(f"length_of_subpackets: {total_len}")
-            
-            x = 0
             while pointer < max_sub_pointer:
-                # limit for ==, <, > operations
-                if subpackets_limit and x >= subpackets_limit:
-                    next = "end"
-
                 new_pointer, result = parse_packet(pointer)
                 pointer = new_pointer
-                return_values.append(result)
-                x += 1
+                return_values.append(result)  
 
             next = "end"
 
@@ -157,13 +146,9 @@ def parse_packet(pointer_start):
             num_of_subpackets = int(bin_number_of_subpackets, 2)
 
             logging.info("number_of_subpackets %d" % num_of_subpackets)
-            print(f"number_of_subpackets: {num_of_subpackets}")
+            # print(f"number_of_subpackets: {num_of_subpackets}")
 
             for i in range(num_of_subpackets):
-                # limit for ==, <, > operations
-                if subpackets_limit and i >= subpackets_limit:
-                    next = "end"
-
                 new_pointer, result = parse_packet(pointer)
                 pointer = new_pointer
                 return_values.append(result)
@@ -182,46 +167,45 @@ def parse_packet(pointer_start):
 
     if pkt_id == 4:
         logging.info(">>>> just return list:" % return_values)
-        print(f"Values: {return_values} -> {return_values}")
+        # print(f"Values: {return_values} -> {return_values}")
         return (pointer, return_values)
 
     if pkt_id == 0:
         # Sum of literal values
         logging.info(">>>>SUM: %d" % sum(return_values))
-        print(f"+: {return_values} -> {sum(return_values)}")
+        # print(f"+: {return_values} -> {sum(return_values)}")
         return (pointer, sum(return_values))
     
     if pkt_id == 1:
         # print(return_values)
-        logging.info(">>>>PRODUCT: %d" % product(return_values))
-        # print(f"*: {return_values} -> {product(return_values)}")
-        print(f"*: {return_values} -> {reduce(operator.mul, return_values, 1)}")
+        # logging.info(">>>>PRODUCT: %d" % product(return_values))
+  
+        # print(f"*: {return_values} -> {reduce(operator.mul, return_values, 1)}")
         return (pointer, reduce(operator.mul, return_values, 1))
-        # return (pointer, product(return_values))
 
     if pkt_id == 2:
         logging.info(">>>>MIN: %d" % min(return_values))
-        print(f"min: {return_values} -> {min(return_values)}")
+        # print(f"min: {return_values} -> {min(return_values)}")
         return (pointer, min(return_values))
         
     if pkt_id == 3:
         logging.info(">>>>MAX: %d" % max(return_values))
-        print(f"max: {return_values} -> {max(return_values)}")
+        # print(f"max: {return_values} -> {max(return_values)}")
         return (pointer, max(return_values))
 
     if pkt_id == 5:
         # logging.info(">>>>GREATER: %s" % return_values[0] > return_values[1])
-        print(f">: {return_values} -> {1 if return_values[0] > return_values[1] else 0}")
+        # print(f">: {return_values} -> {1 if return_values[0] > return_values[1] else 0}")
         return (pointer, 1) if return_values[0] > return_values[1] else (pointer, 0)
 
     if pkt_id == 6:
         # logging.info(">>>>SMALLER: %s" % return_values[0] < return_values[1])
-        print(f"<: {return_values} -> {1 if return_values[0] < return_values[1] else 0}")
+        # print(f"<: {return_values} -> {1 if return_values[0] < return_values[1] else 0}")
         return (pointer, 1) if return_values[0] < return_values[1] else (pointer, 0)
     
     if pkt_id == 7:
         # logging.info(">>>>EQUAL: %s" % return_values[0] == return_values[1])
-        print(f"==: {return_values} -> {1 if return_values[0] == return_values[1] else 0}")
+        # print(f"==: {return_values} -> {1 if return_values[0] == return_values[1] else 0}")
         return (pointer, 1) if return_values[0] == return_values[1] else (pointer, 0)
 
 
@@ -234,22 +218,6 @@ def linearize(input):
         else:
             linearized.append(i)
     return linearized
-
-
-def product(input):
-    prod = 0
-    for i in input:
-        if isinstance(i, list):
-            if prod == 0:
-                prod = product(i)
-            else:
-                prod *= product(i)
-        else:
-            if prod == 0:
-                prod = i
-            else:
-                prod *= i
-    return prod
 
 
 def evaluate_packet(packet_data):
@@ -276,11 +244,15 @@ def evaluate_packet(packet_data):
 def TEST(input_string, expected):
     value = evaluate_packet(input_string)
     global passed
+
+    if len(input_string) > 15:
+        input_string = input_string[0:15] + "..." + input_string[-3:]
+
     if value != expected:
-        print("[FAIL]:", value, "is not equal", expected, "(input:", input_string,")")
+        print(f"[FAIL]: {value} is not equal {expected} (input: {input_string})")
     else:
         passed += 1
-        print("[PASS]:", value, "is equal", expected, "(input:", input_string,")")
+        print(f"[PASS]: {value} is equal {expected} (input: {input_string})")
 
 
 if __name__ == "__main__":
@@ -289,6 +261,7 @@ if __name__ == "__main__":
 
     global bin_packet
     global passed
+
     passed = 0
 
     # Run all example inputs
@@ -306,5 +279,9 @@ if __name__ == "__main__":
     # Evaluate production input
     fdata = open("input.txt", 'r')
     packet = fdata.readline().rstrip()
-    value = evaluate_packet(packet)
-    print(value)
+    TEST(packet, 1495959086337)
+    # result = evaluate_packet(packet)
+    # print(f"Result: {result}")
+
+
+    
