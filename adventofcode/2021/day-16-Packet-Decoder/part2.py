@@ -1,90 +1,54 @@
 from functools import reduce
 import operator
+import logging, sys
 
 def bin_format(hexint, length):
     return f'{hexint:0>{length}b}'
 
-
-def parse_packet(bit_length=None, number_of_subpackets=None):
-    """
-    Pass bit_length 
-        OR 
-    number of subpackets.
-
-    Returns new pointer position.
-
-    Function is expected to be called recursively.
-    """
+def parse_packet(pointer_start):
     global bin_packet
-    global pointer
 
-    print("::Called parse_packet,", number_of_subpackets)
+    logging.info("::Called parse_packet,")
 
-    # pointer = pointer_position
+    pointer = pointer_start
 
+    final_group = ""
     return_values = []
     pkt_id = ""
-    n = 0
-    returned = False
-
-    # TODO: Poznamka: mozna cele while dat do funkce, a udelat zpracovani treba pro nejaky segment vstupniho packetu -
-    # jakoze z celeho packetu treba vim, ze nasledujichich X bitu jsou subpackety, takze predam od aktualniho po X bity
-    # teto funkci, a ona to rozparsuje.
-    # TODO: Nebo parsovani jednotlivych sub packetu vyclenit do funkci. Nakreslit si to.
-
-    # Determine, if we will parse N sub packets or X bits of subpackets
-    sentinel = 0
-    if bit_length is not None:
-        sentinel = bit_length
-    else:
-        sentinel = len(bin_packet)-1
+    pkt_version = ""
 
     next = "start"
-    # while next is not "end" or pointer < len(bin_packet)-1:
-    # while pointer < sentinel:
-    while pointer <= sentinel+1:
-        # print("ptr", pointer, '<', sentinel, " Next=", next)
-        print("> Gefore IFs")
-
+    while next != "end":
         if next == "start":
-            print()
-            print(">START")
-
-            if number_of_subpackets not in [0, None] and n >= number_of_subpackets:
-                break
-
-            print(">START: Zbyva dost bitu na dalsi paket?", pointer, sentinel)
-            if sentinel <= pointer + 6:
-                print(return_values)
-                print(">START: exit START")
-                break
+            logging.info("")
+            logging.info(">START")
+            
             next = "version"
 
         # VERSION
         elif next == "version":
-            print(">VERSION")
+            logging.info(">VERSION")
             version = ""
             for i in range(3):
                 version += bin_packet[pointer]
                 pointer += 1
             
-            print("Version", int(version, 2))
-            pkt_version = version
-            # versions_sum += int(version, 2)
+            logging.info("Version %d" % int(version, 2))
+            pkt_version = int(version, 2)
             next = "type"
 
         # TYPE
         elif next == "type":
-            print(">TYPE identification")
+            logging.info(">TYPE identification")
             type = ""
             for i in range(3):
                 type += bin_packet[pointer]
                 pointer += 1
 
             int_type = int(type, 2)
-            print("Type", int_type)
-            if pkt_id == "":
-                pkt_id = int_type
+            logging.debug("Type: %d" % int_type)
+            
+            pkt_id = int_type
 
             if int_type == 4:
                 next = "type4"
@@ -93,7 +57,7 @@ def parse_packet(bit_length=None, number_of_subpackets=None):
 
         # Packet Type: 4
         elif next == "type4":
-            print(">TYPE 4")
+            logging.info(">TYPE 4")
             is_last = bin_packet[pointer]
             pointer += 1
 
@@ -104,78 +68,44 @@ def parse_packet(bit_length=None, number_of_subpackets=None):
 
         # GROUP
         elif next == "notlastgroup":
-            print(">GROUP")
+            logging.info(">GROUP")
             group = ""
             for i in range(4):
                 group += bin_packet[pointer]
                 pointer += 1
-
-            int_type = int(group, 2)
-            return_values.append(int_type)
-            print("Group", int_type)
+            
+            # Append group part into the final_group for 
+            # evaluation in GROUP LAST.
+            final_group += group
 
             next = "type4"
 
         # GROUP LAST
         elif next == "lastgroup":
-            print(">GROUP last")
+            logging.info(">GROUP last")
             group = ""
             for i in range(4):
                 group += bin_packet[pointer]
                 pointer += 1
+            
+            final_group += group
 
-            int_type = int(group, 2)
+            int_type = int(final_group, 2)
             return_values.append(int_type)
-            print("Last Group", int_type)
+            logging.debug("Last Group %d" % int_type)
+
+            final_group = ""
 
             next = "end"
 
-        # TODO: Pro kazdou rekurzi potrebuju vratit pod whilem ziskanou hodnotu literalu,
-        # abych na t echto hodnotach nasledne mohl provest danou operaci. ta zase
-        # podobne jako literaly bude vracena dale.
-
         # END
         elif next == "end":
-            print(">END")
-            # print("Groups literal value", int(groups_literal, 2))
-            n += 1
-            print("pointer:", pointer, " sentinel:", sentinel)
-
-            print("END - pkt_ID", pkt_id)
-
-            #if pkt_id == 4:
-            #    print(">>>>LITERAL:", return_values)
-            #    return return_values
-
-            if returned is True:
-                break
-
-            # experimental - for subpackets
-            # print('len(bin_packet)', len(bin_packet), 'pointer:', pointer, 'sentinel:', sentinel)
-            # if subs > 0 or max_sub_pointer > pointer:
-            #     print("to start again")
-            #     next = "start"
-            # else:
-            #     break
-
-            # print("Mam jeste pokracoval????", pointer, sentinel)
-            # if sentinel <= pointer + 6:
-            #     break
-
-            ### Evaluovat aktualni vysledek?
-
-            if pointer+6 < sentinel:
-                #if pointer > sentinel -2:
-                #    break
-                print("end: next = start")
-                next = "start"
-            else:
-                print("end: break")
-                break
+            logging.info(">END")
+            break
 
         # Packet Type: Operator
         elif next == "operator":
-            print(">OPERATOR")
+            logging.info(">OPERATOR")
             mode = bin_packet[pointer]
             pointer += 1
 
@@ -186,7 +116,7 @@ def parse_packet(bit_length=None, number_of_subpackets=None):
 
         # SUBPACKETS LENGTH
         elif next == "mode1":
-            print(">MODE1 (15) - bit len of subpackets")
+            logging.info(">MODE1 (15) - bit len of subpackets")
             # Read 15 bits
             total_len_of_subpackets = ""
             for i in range(15):
@@ -194,19 +124,19 @@ def parse_packet(bit_length=None, number_of_subpackets=None):
                 pointer += 1
 
             total_len = int(total_len_of_subpackets, 2)
-            max_sub_pointer = pointer + total_len  # experimental
+            max_sub_pointer = pointer + total_len
             
-            # print("total_length_of_subpackets", total_len)
-            # print(pointer, max_sub_pointer)
-            
-            return_values.append(parse_packet(bit_length=max_sub_pointer + 1))
-            # returned = True
+            while pointer < max_sub_pointer:
+                new_pointer, result = parse_packet(pointer)
+                pointer = new_pointer
+                return_values.append(result)  
 
-            next = "end" #start
+            next = "end"
 
         # SUBPACKETS NUMBER
         elif next == "mode2":
-            print(">MODE2 (11) - number of subpackets")
+            logging.info(">MODE2 (11) - number of subpackets")
+            
             # Read 11 bits
             bin_number_of_subpackets = ""
             for i in range(11):
@@ -215,69 +145,69 @@ def parse_packet(bit_length=None, number_of_subpackets=None):
 
             num_of_subpackets = int(bin_number_of_subpackets, 2)
 
-            print("number_of_subpackets", num_of_subpackets)
+            logging.info("number_of_subpackets %d" % num_of_subpackets)
+            # print(f"number_of_subpackets: {num_of_subpackets}")
 
-            # return_values = []
-            # for i in range(num_of_subpackets):
-            return_values.append(parse_packet(number_of_subpackets=num_of_subpackets))
-            returned = True
-            # print("returned ", i, "/", num_of_subpackets)
+            for i in range(num_of_subpackets):
+                new_pointer, result = parse_packet(pointer)
+                pointer = new_pointer
+                return_values.append(result)
 
-            #print(return_values)
-            #print(return_values, sum(return_values))
-            
-            # after all subpackets, we get all required values. Calculate result.
-            
-            # break
-
-            next = "end" #start
-            
-
-        # EVALUATION
-        elif next == "evaluation":
-            pass
+            next = "end"
 
 
     # End of While:
-    print(">after WHILE", pointer, sentinel)
-    print("Groups literals list:", return_values)
-    print("pkt type:", pkt_id)
+    logging.info(">after WHILE %d" % pointer)
+    logging.info("Groups literals list: %s" % return_values)
+    logging.info("pkt type: %d" % pkt_id)
+
+    logging.info("::returned parse_packet,")
     
     return_values = linearize(return_values)
 
     if pkt_id == 4:
-        print(">>>> just return list:", return_values)
-        return return_values
+        logging.info(">>>> just return list:" % return_values)
+        # print(f"Values: {return_values} -> {return_values}")
+        return (pointer, return_values)
 
     if pkt_id == 0:
         # Sum of literal values
-        print(">>>>SUM:", sum(return_values))
-        return sum(return_values)
+        logging.info(">>>>SUM: %d" % sum(return_values))
+        # print(f"+: {return_values} -> {sum(return_values)}")
+        return (pointer, sum(return_values))
     
     if pkt_id == 1:
         # print(return_values)
-        print(">>>>PRODUCT:", product(return_values))
-        return reduce(operator.mul, return_values, 1)
+        # logging.info(">>>>PRODUCT: %d" % product(return_values))
+  
+        # print(f"*: {return_values} -> {reduce(operator.mul, return_values, 1)}")
+        return (pointer, reduce(operator.mul, return_values, 1))
 
     if pkt_id == 2:
-        print(">>>>MIN:", min(return_values))
-        return min(return_values)
+        logging.info(">>>>MIN: %d" % min(return_values))
+        # print(f"min: {return_values} -> {min(return_values)}")
+        return (pointer, min(return_values))
         
     if pkt_id == 3:
-        print(">>>>MAX:", max(return_values))
-        return max(return_values)
+        logging.info(">>>>MAX: %d" % max(return_values))
+        # print(f"max: {return_values} -> {max(return_values)}")
+        return (pointer, max(return_values))
 
     if pkt_id == 5:
-        print(">>>>GREATER:", return_values[0] > return_values[1])
-        return 1 if return_values[0] > return_values[1] else 0
+        # logging.info(">>>>GREATER: %s" % return_values[0] > return_values[1])
+        # print(f">: {return_values} -> {1 if return_values[0] > return_values[1] else 0}")
+        return (pointer, 1) if return_values[0] > return_values[1] else (pointer, 0)
 
     if pkt_id == 6:
-        print(">>>>SMALLER:", return_values[0] < return_values[1])
-        return 1 if return_values[0] < return_values[1] else 0
+        # logging.info(">>>>SMALLER: %s" % return_values[0] < return_values[1])
+        # print(f"<: {return_values} -> {1 if return_values[0] < return_values[1] else 0}")
+        return (pointer, 1) if return_values[0] < return_values[1] else (pointer, 0)
     
     if pkt_id == 7:
-        print(">>>>EQUAL:", return_values[0] == return_values[1])
-        return 1 if return_values[0] == return_values[1] else 0
+        # logging.info(">>>>EQUAL: %s" % return_values[0] == return_values[1])
+        # print(f"==: {return_values} -> {1 if return_values[0] == return_values[1] else 0}")
+        return (pointer, 1) if return_values[0] == return_values[1] else (pointer, 0)
+
 
 
 def linearize(input):
@@ -290,64 +220,51 @@ def linearize(input):
     return linearized
 
 
-def product(input):
-    prod = 0
-    for i in input:
-        if isinstance(i, list):
-            if prod == 0:
-                prod = product(i)
-            else:
-                prod *= product(i)
-        else:
-            if prod == 0:
-                prod = i
-            else:
-                prod *= i
-    return prod
-
-
 def evaluate_packet(packet_data):
-    global pointer
-    global bin_packet
-    # Convert from hex to bin
+    """
+    Input: string in hexadecimal format.
+    i.e. "C200B40A82"
+    Returns: Evaluated expression packet value
 
+    This function transforms hexadecimal input into
+    binary input ('0111001010011101...') and pass
+    it into packet parser.
+    """
+    global bin_packet
+    
+    # Convert from hex to bin
     integer = int(packet_data, 16)
     bin_packet = bin_format(integer, len(packet_data) * 4)
 
-    pointer = 0
-    result = parse_packet(bit_length=len(bin_packet) - 1)
+    init_pointer = 0
+    pointer, result = parse_packet(init_pointer)
     return result
 
 
 def TEST(input_string, expected):
     value = evaluate_packet(input_string)
     global passed
+
+    if len(input_string) > 15:
+        input_string = input_string[0:15] + "..." + input_string[-3:]
+
     if value != expected:
-        print("[FAIL]:", value, "is not equal", expected, "(input:", input_string,")")
+        print(f"[FAIL]: {value} is not equal {expected} (input: {input_string})")
     else:
         passed += 1
-        print("[PASS]:", value, "is equal", expected, "(input:", input_string,")")
+        print(f"[PASS]: {value} is equal {expected} (input: {input_string})")
 
 
 if __name__ == "__main__":
-    # fdata = open("input_short.txt", 'r')  # Literal packet
-    # fdata = open("input-operator.txt", 'r')  # Operator with 2 subpackets 
-    # fdata = open("input-three-sub.txt", 'r')
-    # fdata = open("input_1.txt", 'r')  # should have total value of 16  # OK
-    # fdata = open("input_2.txt", 'r')  # should have total value of 12
-    # fdata = open("input_3.txt", 'r')  # should have total value of 23
-    # fdata = open("input_4.txt", 'r')  # should have total value of 31   # OK
-    # fdata = open("input.txt", 'r')
-    
-    # packet = fdata.readline().rstrip()
-    # print(packet)
+    # Levels = NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL
+    # logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
-    global pointer
     global bin_packet
-
     global passed
+
     passed = 0
 
+    # Run all example inputs
     TEST("C200B40A82", 3)
     TEST("04005AC33890", 54)
     TEST("880086C3E88112", 7)
@@ -357,4 +274,14 @@ if __name__ == "__main__":
     TEST("9C005AC2F8F0", 0)
     TEST("9C0141080250320F1802104A08", 1)
 
-    print("PASSED ", passed)
+    print(f"PASSED {passed}/8")
+
+    # Evaluate production input
+    fdata = open("input.txt", 'r')
+    packet = fdata.readline().rstrip()
+    TEST(packet, 1495959086337)
+    # result = evaluate_packet(packet)
+    # print(f"Result: {result}")
+
+
+    
