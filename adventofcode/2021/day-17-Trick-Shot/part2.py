@@ -8,7 +8,7 @@ def shoot(initial_position, initial_velocity, target_area):
     velocity_x = initial_velocity[0]
     velocity_y = initial_velocity[1]
 
-    max_steps = 300
+    max_steps = 400
     step = 0
     hit = False
     while hit is False:
