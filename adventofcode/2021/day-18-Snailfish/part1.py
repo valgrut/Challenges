@@ -13,6 +13,9 @@ class Node():
         self.left = None
         self.right = None
 
+        self.calculated = False
+        self.magnitude = 0
+
 
 def traverse_tree(root) -> None:
     """
@@ -42,6 +45,7 @@ def string_to_tree(data_str) -> Node:
 
     current_node = root_node
     side_stack = ["left"]
+    #print(data_str)
     for ch in data_str:
         # print("ch:", ch)
         if ch == "[":
@@ -127,6 +131,19 @@ def TEST(input_string, expected):
     else:
         passed += 1
         print(f"[PASS]: {return_value} is equal {expected}") # (input: {input_string})")
+
+
+def TEST_CMP(input_string, expected):
+    global passed
+    global failed
+
+    if input_string != expected:
+        failed += 1
+        print(f"[FAIL]: {input_string} is not equal {expected}") # (input: {input_string})")
+    else:
+        passed += 1
+        print(f"[PASS]: {input_string} is equal {expected}") # (input: {input_string})")
+
 
 
 def find_closest_left_value(previous, current, expl_left_value):
@@ -215,7 +232,6 @@ def find_closest_right_value(previous, current, expl_right_value):
             find_closest_right_value(current, current.left, expl_right_value)
             # UP to the right viz 2. 
         else:
-            #print("found")
             current.left += expl_right_value
         return
 
@@ -225,35 +241,34 @@ def find_closest_right_value(previous, current, expl_right_value):
             find_closest_right_value(current, current.left, expl_right_value)
             # UP to the right viz 2. 
         else:
-            #print("found")
             current.left += expl_right_value
         return
 
 
-def find_leftmost_value(root):
+def calculate_magnitude(root):
     """
-    Find leftmost value for magnitude calculation
+    For each node, calculates its magnitude
     """
-    ret = -1
-    if isinstance(root.left, Node):
-        ret = find_leftmost_value(root.left)
-    else:
-        ret = root.left
+    current = root
+    if isinstance(current.left, Node) and current.left.calculated is False:
+        calculate_magnitude(current.left)
+    
+    if isinstance(current.right, Node) and current.right.calculated is False:
+        calculate_magnitude(current.right)
 
-    return ret
+    left_magnitude = current.left if not isinstance(current.left, Node) else current.left.magnitude
+    right_magnitude = current.right if not isinstance(current.right, Node) else current.right.magnitude
 
+    # Z nejakeho duvodu je prvni node v levem childu root nodu, takze i vysledek
+    # je zde ulozen. Prvni node stromu je v root.left, ale NEVIM PROC.
+    # print("left:",left_magnitude)
 
-def find_rightmost_value(root):
-    """
-    Find rightmost value for magnitude calculation
-    """
-    ret = -1
-    if isinstance(root.right, Node):
-        ret = find_rightmost_value(root.right)
-    else:
-        ret = root.right
+    if current.parent is not None:
+        current.magnitude = (3*left_magnitude) + (2*right_magnitude)
+        current.calculated = True
 
-    return ret
+    if current.parent is None:
+        return left_magnitude
 
 
 def find_split_value(root_tree) -> Node:
@@ -419,25 +434,6 @@ if __name__ == "__main__":
     passed = 0
     failed = 0
 
-    print("Testing part 1")
-    fdata = open("input1.txt", 'r')
-
-    sum = fdata.readline().rstrip()
-    for line in fdata:
-        line = line.rstrip()
-        # TEST(line, line)
-
-        print("adding:")
-        print("sum ", sum)
-        print("line", line)
-        sum = add_numbers(sum, line)
-
-    # Calculate magnitude
-    # TODO
-
-    # Expected result for "input1.txt"
-    TEST(sum, "[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]")
-
     print("")
     print(f"PASSED: {passed}/{passed+failed}")
     print(f"FAILED: {failed}/{passed+failed}")
@@ -475,6 +471,7 @@ if __name__ == "__main__":
     sum = add_numbers(sum, "[6,6]")
     TEST(sum, "[[[[5,0],[7,4]],[5,5]],[6,6]]")
 
+    # Testing of Complex addition
     print()
     TEST(add_numbers("[[[0,[4,5]],[0,0]],[[[4,5],[2,6]],[9,5]]]", "[7,[[[3,7],[4,3]],[[6,3],[8,8]]]]"), "[[[[4,0],[5,4]],[[7,7],[6,0]]],[[8,[7,7]],[[7,9],[5,0]]]]")
     TEST(add_numbers("[[[[4,0],[5,4]],[[7,7],[6,0]]],[[8,[7,7]],[[7,9],[5,0]]]]", "[[2,[[0,8],[3,4]]],[[[6,7],1],[7,[1,6]]]]"), "[[[[6,7],[6,7]],[[7,7],[0,7]]],[[[8,7],[7,7]],[[8,8],[8,0]]]]")
@@ -483,4 +480,130 @@ if __name__ == "__main__":
     TEST(add_numbers("[[[[7,7],[7,8]],[[9,5],[8,7]]],[[[6,8],[0,8]],[[9,9],[9,0]]]]", "[[2,[2,2]],[8,[8,1]]]"), "[[[[6,6],[6,6]],[[6,0],[6,7]]],[[[7,7],[8,9]],[8,[8,1]]]]")
     TEST(add_numbers("[[[[6,6],[6,6]],[[6,0],[6,7]]],[[[7,7],[8,9]],[8,[8,1]]]]", "[2,9]"), "[[[[6,6],[7,7]],[[0,7],[7,7]]],[[[5,5],[5,6]],9]]")
     TEST(add_numbers("[[[[6,6],[7,7]],[[0,7],[7,7]]],[[[5,5],[5,6]],9]]", "[1,[[[9,3],9],[[9,0],[0,7]]]]"), "[[[[7,8],[6,7]],[[6,8],[0,8]]],[[[7,7],[5,0]],[[5,5],[5,6]]]]")
+    
+    # Testing of magnitude calculation
+    print()
+    TEST_CMP(calculate_magnitude(string_to_tree("[9,1]")), 29)
+    TEST_CMP(calculate_magnitude(string_to_tree("[1,9]")), 21)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[9,1],[1,9]]")), 129)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[1,2],[[3,4],5]]")), 143)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[[[0,7],4],[[7,8],[6,0]]],[8,1]]")), 1384)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[[[1,1],[2,2]],[3,3]],[4,4]]")), 445)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[[[3,0],[5,3]],[4,4]],[5,5]]")), 791)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[[[5,0],[7,4]],[5,5]],[6,6]]")), 1137)
+    TEST_CMP(calculate_magnitude(string_to_tree("[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]")), 3488)
+
+
+    # === Example input ===
+    print("Example input")
+    fdata = open("input1.txt", 'r')
+
+    sum = fdata.readline().rstrip()
+    for line in fdata:
+        line = line.rstrip()
+        sum = add_numbers(sum, line)
+
+    # Calculate magnitude
+    magnitude = calculate_magnitude(string_to_tree(sum))
+    print("magnitude: ", magnitude)
+
+    # Expected result for "input1.txt"
+    TEST(sum, "[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]")
+    TEST_CMP(magnitude, 3488)
+    fdata.close()
+
+
+    # === Homework input === 
+    print("Homework input")
+    fdata = open("input2.txt", 'r')
+    sum = fdata.readline().rstrip()
+    for line in fdata:
+        line = line.rstrip()
+        sum = add_numbers(sum, line)
+
+    # Calculate magnitude
+    magnitude = calculate_magnitude(string_to_tree(sum))
+    print("magnitude: ", magnitude)
+    TEST_CMP(magnitude, 4140)
+    fdata.close()
+
+
+    # === Real input ===
+    print("Real input")
+    fdata = open("input.txt", 'r')
+    sum = fdata.readline().rstrip()
+    for line in fdata:
+        line = line.rstrip()
+        sum = add_numbers(sum, line)
+
+    # Calculate magnitude
+    magnitude = calculate_magnitude(string_to_tree(sum))
+    print(sum)
+    print("magnitude: ", magnitude)
+
+    # Expected result for "input1.txt"
+    # TEST(sum, "[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]")
+    fdata.close()
+    
+
+    # ===== part2 =====
+    # Homework input
+    print("Homework input")
+    fdata = open("input2.txt", 'r')
+    num_list = []
+    for line in fdata:
+        line = line.rstrip()
+        num_list.append(line)
+        
+    fdata.close()
+
+    largest_magnitude = 0
+    for first in num_list[:]:
+        for second in num_list[:]:
+            # one combination
+            sum = add_numbers(first, second)
+            magnitude = calculate_magnitude(string_to_tree(sum))
+
+            if magnitude > largest_magnitude:
+                largest_magnitude = magnitude
+
+            # inverse combination
+            sum = add_numbers(second, first)
+            magnitude = calculate_magnitude(string_to_tree(sum))
+
+            if magnitude > largest_magnitude:
+                largest_magnitude = magnitude
+    
+    TEST_CMP(largest_magnitude, 3993)
+    print("largest magnitude: ", largest_magnitude)
+
+
+    # Real input
+    print("Real input")
+    fdata = open("input.txt", 'r')
+    num_list = []
+    for line in fdata:
+        line = line.rstrip()
+        num_list.append(line)
+        
+    fdata.close()
+
+    largest_magnitude = 0
+    for first in num_list[:]:
+        for second in num_list[:]:
+            # one combination
+            sum = add_numbers(first, second)
+            magnitude = calculate_magnitude(string_to_tree(sum))
+
+            if magnitude > largest_magnitude:
+                largest_magnitude = magnitude
+
+            # inverse combination
+            sum = add_numbers(second, first)
+            magnitude = calculate_magnitude(string_to_tree(sum))
+
+            if magnitude > largest_magnitude:
+                largest_magnitude = magnitude
+    
+    print("largest magnitude: ", largest_magnitude)
 
