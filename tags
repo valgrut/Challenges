@@ -1,0 +1,682 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ANT_H	Langston-Ant/Ant.h	2;"	d
+Ant	Langston-Ant/Ant.cpp	/^Ant::Ant(const std::pair<int,int> mapsize) : _direction("UP"), _mapsize(mapsize)$/;"	f	class:Ant
+Ant	Langston-Ant/Ant.h	/^class Ant$/;"	c
+BOARD_H	Langston-Ant/Board.h	2;"	d
+BOARD_H	My-Tetris/Board.h	2;"	d
+BOARD_H_	Game-of-Go-Logic/Board.h	9;"	d
+Board	Game-of-Go-Logic/Board.cpp	/^Board::Board(unsigned int size) : _board(size * size), _gobanSize(size)$/;"	f	class:Board
+Board	Game-of-Go-Logic/Board.h	/^class Board {$/;"	c
+Board	Langston-Ant/Board.cpp	/^Board::Board(std::pair<int,int> size)$/;"	f	class:Board
+Board	Langston-Ant/Board.h	/^class Board$/;"	c
+Board	My-Tetris/Board.cpp	/^Board::Board(unsigned int x, unsigned int y) : _sizeX(x), _sizeY(y)$/;"	f	class:Board
+Board	My-Tetris/Board.h	/^class Board$/;"	c
+CC	CPU-Simulation/Makefile	/^CC=g++$/;"	m
+CC	Langston-Ant/Makefile	/^CC=g++$/;"	m
+CC	Minesweeper/Makefile	/^CC=g++$/;"	m
+CC	My-Tetris/Makefile	/^CC=g++$/;"	m
+CC	adventofcode/2021/day-6-Lanternfish/Makefile	/^CC=g++$/;"	m
+CFLAGS	adventofcode/2021/day-6-Lanternfish/Makefile	/^CFLAGS=-O2$/;"	m
+COMMAND	Langston-Ant/Makefile	/^COMMAND=$(CC) -c $<$/;"	m
+COMMAND	My-Tetris/Makefile	/^COMMAND=$(CC) -c $<$/;"	m
+DEBUG	CPU-Simulation/main.cpp	6;"	d	file:
+DEBUG	CPU-Simulation/main.cpp	7;"	d	file:
+DEBUG	Minesweeper/main.cpp	6;"	d	file:
+DEBUG	Minesweeper/main.cpp	7;"	d	file:
+DEPS	adventofcode/2021/day-6-Lanternfish/Makefile	/^DEPS=$/;"	m
+Enigma	Enigma/main.py	/^class Enigma:$/;"	c
+FLAGS	CPU-Simulation/Makefile	/^FLAGS=-std=c++14 -Wall -Wextra$/;"	m
+FLAGS	Langston-Ant/Makefile	/^FLAGS=-std=c++14 -Weffc++ -Wall -Wextra$/;"	m
+FLAGS	Minesweeper/Makefile	/^FLAGS=-std=c++14 -Wall -Wextra$/;"	m
+FLAGS	My-Tetris/Makefile	/^FLAGS=-std=c++14 -Weffc++ -Wall -Wextra$/;"	m
+GAME_H	Langston-Ant/Game.h	2;"	d
+GAME_H	My-Tetris/Game.h	2;"	d
+GROUP_H_	Game-of-Go-Logic/Group.h	9;"	d
+Game	Langston-Ant/Game.cpp	/^Game::Game()$/;"	f	class:Game
+Game	Langston-Ant/Game.h	/^class Game$/;"	c
+Game	My-Tetris/Game.cpp	/^Game::Game() : _board(8, 20), _score(0)$/;"	f	class:Game
+Game	My-Tetris/Game.h	/^class Game$/;"	c
+Group	Game-of-Go-Logic/Group.cpp	/^Group::Group() : _liberties(4), _group(0), _groupNumber(0)$/;"	f	class:Group
+Group	Game-of-Go-Logic/Group.cpp	/^Group::Group(int groupNumber) : _liberties(4), _group(0), _groupNumber(groupNumber)$/;"	f	class:Group
+Group	Game-of-Go-Logic/Group.h	/^class Group$/;"	c
+INSTRUCTION	CPU-Simulation/main.cpp	/^enum{INSTRUCTION, PARAM1, PARAM2};$/;"	e	enum:__anon1	file:
+MINES	Minesweeper/main.cpp	/^unsigned int MINES = 8;$/;"	v
+N	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^        N = abs(pos - tarpos)$/;"	v
+Node	adventofcode/2021/day-18-Snailfish/part1.py	/^class Node():$/;"	c
+PARAM1	CPU-Simulation/main.cpp	/^enum{INSTRUCTION, PARAM1, PARAM2};$/;"	e	enum:__anon1	file:
+PARAM2	CPU-Simulation/main.cpp	/^enum{INSTRUCTION, PARAM1, PARAM2};$/;"	e	enum:__anon1	file:
+PLAYER_H_	Game-of-Go-Logic/Player.h	9;"	d
+Player	Game-of-Go-Logic/Player.cpp	/^Player::Player() : name("Valgrut"), level(0)$/;"	f	class:Player
+Player	Game-of-Go-Logic/Player.h	/^class Player$/;"	c
+Plugboard	Enigma/main.py	/^class Plugboard:$/;"	c
+PrintVector	adventofcode/2021/day-6-Lanternfish/part1-dynamic.cpp	/^void PrintVector(vector<uint_fast8_t> *v)$/;"	f
+PrintVector	adventofcode/2021/day-6-Lanternfish/part1.cpp	/^void PrintVector(vector<uint_fast8_t> *v)$/;"	f
+RM	Game-of-Go-Logic/makefile	/^RM := rm -rf$/;"	m
+Reflector	Enigma/main.py	/^class Reflector:$/;"	c
+RotatingCircle	Fourier-series/fourier_series.py	/^class RotatingCircle(pygame.sprite.Sprite):$/;"	c
+SHAPE_H	My-Tetris/Shape.h	2;"	d
+SHELL	Langston-Ant/Makefile	/^SHELL=\/bin\/sh$/;"	m
+SHELL	My-Tetris/Makefile	/^SHELL=\/bin\/sh$/;"	m
+STONE_H_	Game-of-Go-Logic/Stone.h	9;"	d
+Shape	My-Tetris/Shape.cpp	/^Shape::Shape(string shape, unsigned int x, unsigned int y) : _shape(4), _sizeX(x), _sizeY(y)$/;"	f	class:Shape
+Shape	My-Tetris/Shape.h	/^class Shape$/;"	c
+SplitString	adventofcode/2021/day-6-Lanternfish/part1-dynamic.cpp	/^void SplitString(string s, vector<uint_fast8_t> *v){$/;"	f
+SplitString	adventofcode/2021/day-6-Lanternfish/part1.cpp	/^void SplitString(string s, vector<uint_fast8_t> *v){$/;"	f
+Stone	Game-of-Go-Logic/Stone.cpp	/^Stone::Stone() : _coord(std::make_pair(0,0)), _inGroup(0), _color("Black")$/;"	f	class:Stone
+Stone	Game-of-Go-Logic/Stone.cpp	/^Stone::Stone(std::pair<int,int> coord) : _coord(coord), _inGroup(0), _color("Black")$/;"	f	class:Stone
+Stone	Game-of-Go-Logic/Stone.h	/^class Stone {$/;"	c
+TEST	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^def TEST(input_string, expected):$/;"	f
+TEST	adventofcode/2021/day-18-Snailfish/part1.py	/^def TEST(input_string, expected):$/;"	f
+TEST_CMP	adventofcode/2021/day-18-Snailfish/part1.py	/^def TEST_CMP(input_string, expected):$/;"	f
+TEST_reset	adventofcode/2021/day-18-Snailfish/part1.py	/^def TEST_reset():$/;"	f
+Wheel	Enigma/main.py	/^class Wheel:$/;"	c
+__init__	Enigma/main.py	/^    def __init__(self, plugboard):$/;"	m	class:Plugboard
+__init__	Enigma/main.py	/^    def __init__(self, reflector_wiring):$/;"	m	class:Reflector
+__init__	Enigma/main.py	/^    def __init__(self, wheel1, wheel2, wheel3, reflector, plugboard):$/;"	m	class:Enigma
+__init__	Enigma/main.py	/^    def __init__(self, wheel_wiring, wheel_tooth, initial_shift):$/;"	m	class:Wheel
+__init__	Fourier-series/fourier_series.py	/^    def __init__(self, pos_x=0, pos_y=0, radius=None, velocity=None, parent_node=None):$/;"	m	class:RotatingCircle
+__init__	adventofcode/2021/day-18-Snailfish/part1.py	/^    def __init__(self) -> None:$/;"	m	class:Node
+_ant	Langston-Ant/Game.h	/^     Ant* _ant;$/;"	m	class:Game
+_board	Game-of-Go-Logic/Board.h	/^	std::vector<Stone*> _board;$/;"	m	class:Board
+_board	Langston-Ant/Board.h	/^         std::vector< std::vector<char> > _board;$/;"	m	class:Board
+_board	Langston-Ant/Game.h	/^     Board* _board;$/;"	m	class:Game
+_board	My-Tetris/Board.h	/^         vector< vector<char> > _board;$/;"	m	class:Board
+_board	My-Tetris/Game.h	/^     Board _board;$/;"	m	class:Game
+_color	Game-of-Go-Logic/Stone.h	/^	std::string _color;$/;"	m	class:Stone
+_coord	Game-of-Go-Logic/Stone.h	/^	std::pair<int,int> _coord;$/;"	m	class:Stone
+_count	Game-of-Go-Logic/Group.cpp	/^int Group::_count = 0;$/;"	m	class:Group	file:
+_count	Game-of-Go-Logic/Group.h	/^	static int _count;$/;"	m	class:Group
+_count	Game-of-Go-Logic/Stone.cpp	/^int Stone::_count = 0;$/;"	m	class:Stone	file:
+_count	Game-of-Go-Logic/Stone.h	/^	static int _count;$/;"	m	class:Stone
+_current	Game-of-Go-Logic/Board.h	/^	std::pair<unsigned int,unsigned int> _current; \/\/ posledni polozeny kamen$/;"	m	class:Board
+_currentShape	My-Tetris/Game.h	/^     Shape * _currentShape;$/;"	m	class:Game
+_direction	Langston-Ant/Ant.h	/^         std::string _direction;$/;"	m	class:Ant
+_gameHistory	Game-of-Go-Logic/Board.h	/^	std::vector<Stone> _gameHistory;$/;"	m	class:Board
+_gobanSize	Game-of-Go-Logic/Board.h	/^	unsigned int _gobanSize;$/;"	m	class:Board
+_group	Game-of-Go-Logic/Group.h	/^	std::vector<Stone> _group;$/;"	m	class:Group
+_groupNumber	Game-of-Go-Logic/Group.h	/^	unsigned int _groupNumber;$/;"	m	class:Group
+_groups	Game-of-Go-Logic/Board.h	/^	std::map<int, Group> _groups;$/;"	m	class:Board
+_inGroup	Game-of-Go-Logic/Stone.h	/^	int _inGroup;$/;"	m	class:Stone
+_liberties	Game-of-Go-Logic/Group.h	/^	unsigned int _liberties;$/;"	m	class:Group
+_mapsize	Langston-Ant/Ant.h	/^         const std::pair<int,int> _mapsize;$/;"	m	class:Ant
+_mapsize	Langston-Ant/Board.h	/^         std::pair<int,int> _mapsize;$/;"	m	class:Board
+_placedShapes	My-Tetris/Game.h	/^     vector<Shape*> _placedShapes;$/;"	m	class:Game
+_position	Langston-Ant/Ant.h	/^         std::pair<int,int> _position;$/;"	m	class:Ant
+_score	My-Tetris/Game.h	/^     unsigned int _score;$/;"	m	class:Game
+_shape	My-Tetris/Shape.h	/^         vector< pair<int,int> > _shape;$/;"	m	class:Shape
+_sizeX	My-Tetris/Board.h	/^         unsigned int _sizeX; \/\/8$/;"	m	class:Board
+_sizeX	My-Tetris/Shape.h	/^         unsigned int _sizeX;$/;"	m	class:Shape
+_sizeY	My-Tetris/Board.h	/^         unsigned int _sizeY; \/\/20$/;"	m	class:Board
+_sizeY	My-Tetris/Shape.h	/^         unsigned int _sizeY;$/;"	m	class:Shape
+addStone	Game-of-Go-Logic/Group.cpp	/^void Group::addStone(Stone &s)$/;"	f	class:Group
+add_numbers	adventofcode/2021/day-18-Snailfish/part1.py	/^def add_numbers(number1, number2):$/;"	f
+aggregate_small	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^def aggregate_small(list):$/;"	f
+aim	adventofcode/2021/day-2-Dive/part2.py	/^aim = 0$/;"	v
+appear	adventofcode/2021/day-8-Seven-Segment-Search/part1.py	/^appear = 0$/;"	v
+background	Fourier-series/fourier_series.py	/^background = background.convert()  # convert surface for faster blitting$/;"	v
+background	Fourier-series/fourier_series.py	/^background = pygame.Surface(screen.get_size())  # create surface for background$/;"	v
+base_circle_position_x	Fourier-series/fourier_series.py	/^base_circle_position_x = screen_width \/\/ 4$/;"	v
+base_circle_position_y	Fourier-series/fourier_series.py	/^base_circle_position_y = screen_height \/\/ 2$/;"	v
+base_circle_radius	Fourier-series/fourier_series.py	/^base_circle_radius = size_scale_const * (4 \/ (1 * math.pi))$/;"	v
+bin_format	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^def bin_format(hexint, length):$/;"	f
+bin_format	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^def bin_format(hexint, length):$/;"	f
+bin_packet	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    bin_packet = bin_format(integer, len(packet) * 4)$/;"	v
+bingo_games	adventofcode/2021/day-4-Giant-Squid/part1.py	/^bingo_games = []$/;"	v
+bingo_games	adventofcode/2021/day-4-Giant-Squid/part2.py	/^bingo_games = []$/;"	v
+bingo_hits	adventofcode/2021/day-4-Giant-Squid/part1.py	/^bingo_hits = [int(hit) for hit in fdata.readline().rstrip().split(',')]$/;"	v
+bingo_hits	adventofcode/2021/day-4-Giant-Squid/part2.py	/^bingo_hits = [int(hit) for hit in fdata.readline().rstrip().split(',')]$/;"	v
+board	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^board = [['.' for i in range(0, size_x)] for j in range(0, size_y)]$/;"	v
+board	adventofcode/2021/day-15-Chiton/part1.py	/^    board = []$/;"	v
+board	adventofcode/2021/day-15-Chiton/part2.py	/^    board = []$/;"	v
+board	adventofcode/2021/day-15-Chiton/part2.py	/^    board = final_board$/;"	v
+board	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^board = [[0 for i in range(0, size)] for i in range(0, size)]$/;"	v
+board	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^board = [[0 for i in range(0, size)] for i in range(0, size)]$/;"	v
+board	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^board = []$/;"	v
+board	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^board = []$/;"	v
+board_line_base	adventofcode/2021/day-15-Chiton/part2.py	/^                board_line_base = increase_difficulty(copy.deepcopy(board), x_cnt + y_cnt)$/;"	v
+board_line_base	adventofcode/2021/day-15-Chiton/part2.py	/^        board_line_base = []$/;"	v
+broken	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^            broken = True  # prevent counting corrupted lines to the final score$/;"	v
+broken	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^    broken = False$/;"	v
+calculate_magnitude	adventofcode/2021/day-18-Snailfish/part1.py	/^def calculate_magnitude(root):$/;"	f
+check	Langston-Ant/Ant.cpp	/^bool Ant::check()$/;"	f	class:Ant
+checkBoundaries	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^def checkBoundaries(board, x, y):$/;"	f
+checkBoundaries	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^def checkBoundaries(board, x, y):$/;"	f
+checkBoundaries	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^def checkBoundaries(board, x, y):$/;"	f
+checkBoundaries	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^def checkBoundaries(board, x, y):$/;"	f
+checkRow	My-Tetris/Board.cpp	/^bool Board::checkRow(int i) const$/;"	f	class:Board
+check_win	adventofcode/2021/day-4-Giant-Squid/part1.py	/^def check_win(game, last_number):$/;"	f
+check_win	adventofcode/2021/day-4-Giant-Squid/part2.py	/^def check_win(game, last_number):$/;"	f
+circles	Fourier-series/fourier_series.py	/^circles = []$/;"	v
+clock	Fourier-series/fourier_series.py	/^clock = pygame.time.Clock()$/;"	v
+closed	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^closed = []$/;"	v
+co2_data	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^co2_data = report_data.copy()$/;"	v
+code	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^        code = list(code)$/;"	v
+code_left	adventofcode/2021/day-8-Seven-Segment-Search/part1.py	/^    code_left = [i for i in split[0].split()]$/;"	v
+code_left	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    code_left = [i for i in split[0].split()]$/;"	v
+code_right	adventofcode/2021/day-8-Seven-Segment-Search/part1.py	/^    code_right = [i for i in split[1].split()]$/;"	v
+code_right	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    code_right = [i for i in split[1].split()]$/;"	v
+collision	My-Tetris/Board.cpp	/^bool Board::collision()$/;"	f	class:Board
+color	Game-of-Go-Logic/Stone.cpp	/^std::string Stone::color() const$/;"	f	class:Stone
+conn	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^        conn = line.rstrip().split('-')$/;"	v
+conn	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^        conn = line.rstrip().split('-')$/;"	v
+conv	letterValueSum.py	/^def conv(char):$/;"	f
+coords	Game-of-Go-Logic/Stone.cpp	/^std::pair<int, int> Stone::coords() const$/;"	f	class:Stone
+coords	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        coords = False$/;"	v
+coords	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^coords = True$/;"	v
+count_intersections	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^def count_intersections(array):$/;"	f
+count_intersections	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^def count_intersections(array):$/;"	f
+count_small	adventofcode/2021/day-12-Passage-Pathing/test.py	/^def count_small(list):$/;"	f
+count_unmarked	adventofcode/2021/day-4-Giant-Squid/part1.py	/^def count_unmarked(game):$/;"	f
+count_unmarked	adventofcode/2021/day-4-Giant-Squid/part2.py	/^def count_unmarked(game):$/;"	f
+count_zeros_ones	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^def count_zeros_ones(data):$/;"	f
+csum	letterValueSum.py	/^def csum(str):$/;"	f
+cur_sur	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^        cur_sur = getSurroundingCells(board, current[0], current[1])$/;"	v
+current	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^        current = template[idx] + template[idx + 1]$/;"	v
+current	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^    current = template[idx] + template[idx + 1]$/;"	v
+current	adventofcode/2021/day-15-Chiton/part1.py	/^        current = get_node_with_smallest_tentative_distance()$/;"	v
+current	adventofcode/2021/day-15-Chiton/part1.py	/^    current = initial_node$/;"	v
+current	adventofcode/2021/day-15-Chiton/part2.py	/^        current = get_node_with_smallest_tentative_distance()$/;"	v
+current	adventofcode/2021/day-15-Chiton/part2.py	/^    current = initial_node$/;"	v
+current	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^        current = open.pop(0)$/;"	v
+current_circle	Fourier-series/fourier_series.py	/^    current_circle = None$/;"	v
+current_len	adventofcode/2021/day-6-Lanternfish/part1.py	/^    current_len = len(lanfish_timers)$/;"	v
+data	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^data = [None, None]$/;"	v
+data	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^data = [0 for i in range(0, win_size)]$/;"	v
+data	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^    data = data.rstrip()$/;"	v
+data	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^    data = data.rstrip()$/;"	v
+data_len	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^        data_len = len(data)$/;"	v
+data_len	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^data_len = 0$/;"	v
+data_len	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^data_len = len(report_data[0])$/;"	v
+days_of_simulation	adventofcode/2021/day-6-Lanternfish/part1.py	/^days_of_simulation = 256  # part1: 80, part2: 256 (exponential growth!)$/;"	v
+days_of_simulation	adventofcode/2021/day-6-Lanternfish/part2.py	/^days_of_simulation = 256 # part1: 80, part2: 256 (exponential growth!)$/;"	v
+decripted	Enigma/main.py	/^    decripted = enigma.encode_string(encripted)$/;"	v	class:Enigma
+deep_copy	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^    deep_copy = copy.deepcopy(polymer_counter)$/;"	v
+delta	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^        delta = (1 + N) \/ 2$/;"	v
+depth	adventofcode/2021/day-2-Dive/part1.py	/^depth = 0$/;"	v
+depth	adventofcode/2021/day-2-Dive/part2.py	/^depth = 0$/;"	v
+dots_counter	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^dots_counter = 0$/;"	v
+draw	Fourier-series/fourier_series.py	/^    def draw(self):$/;"	m	class:RotatingCircle
+draw	Langston-Ant/Board.cpp	/^void Board::draw() const$/;"	f	class:Board
+draw	My-Tetris/Board.cpp	/^void Board::draw() const$/;"	f	class:Board
+draw_line	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^def draw_line(array, p_start, p_end):$/;"	f
+draw_line	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^def draw_line(array, p_start, p_end):$/;"	f
+drawboard	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^def drawboard():$/;"	f
+encode_char	Enigma/main.py	/^    def encode_char(self, char):$/;"	m	class:Enigma
+encode_input_char	Enigma/main.py	/^    def encode_input_char(self, in_char):$/;"	m	class:Reflector
+encode_input_char	Enigma/main.py	/^    def encode_input_char(self, in_char):$/;"	m	class:Wheel
+encode_string	Enigma/main.py	/^    def encode_string(self, string):$/;"	m	class:Enigma
+encripted	Enigma/main.py	/^    encripted = enigma.encode_string("hello")$/;"	v	class:Enigma
+end_p	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^    end_p = [int(end.split(',')[0]), int(end.split(',')[1])]$/;"	v
+end_p	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^    end_p = [int(end.split(',')[0]), int(end.split(',')[1])]$/;"	v
+enigma	Enigma/main.py	/^    enigma = Enigma(wheel1, wheel2, wheel3, reflector, plugboard)$/;"	v	class:Enigma
+epsilon_rate	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^epsilon_rate = ""$/;"	v
+evaluate_packet	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^def evaluate_packet(packet_data):$/;"	f
+failed	adventofcode/2021/day-18-Snailfish/part1.py	/^    failed = 0$/;"	v
+fall	My-Tetris/Shape.cpp	/^void Shape::fall()$/;"	f	class:Shape
+fdata	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^fdata = open('data.txt', 'r')$/;"	v
+fdata	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^fdata = open('data.txt', 'r')$/;"	v
+fdata	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^fdata = open("input1.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-15-Chiton/part1.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-15-Chiton/part2.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-18-Snailfish/part1.py	/^    fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-18-Snailfish/part1.py	/^    fdata = open("input1.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-18-Snailfish/part1.py	/^    fdata = open("input2.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-2-Dive/part1.py	/^fdata = open("data.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-2-Dive/part2.py	/^fdata = open("data.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^fdata = open("report.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^fdata = open("report.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-4-Giant-Squid/part1.py	/^fdata = open("report.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-4-Giant-Squid/part2.py	/^fdata = open("report.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-6-Lanternfish/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-6-Lanternfish/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-8-Seven-Segment-Search/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^fdata = open("input.txt", 'r')$/;"	v
+fdata	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^fdata = open("input.txt", 'r')$/;"	v
+filled_ending_parenthesis	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^filled_ending_parenthesis = []$/;"	v
+filled_line	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^        filled_line = []$/;"	v
+final_board	adventofcode/2021/day-15-Chiton/part2.py	/^    final_board = []$/;"	v
+final_number_of_fish	adventofcode/2021/day-6-Lanternfish/part1.py	/^final_number_of_fish = len(lanfish_timers)$/;"	v
+final_score	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^final_score = []$/;"	v
+final_sum	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^final_sum = 0$/;"	v
+find_closest_left_value	adventofcode/2021/day-18-Snailfish/part1.py	/^def find_closest_left_value(previous, current, expl_left_value):$/;"	f
+find_closest_right_value	adventofcode/2021/day-18-Snailfish/part1.py	/^def find_closest_right_value(previous, current, expl_right_value):$/;"	f
+find_exploding_pair	adventofcode/2021/day-18-Snailfish/part1.py	/^def find_exploding_pair(root_tree, depth) -> Node:$/;"	f
+find_split_value	adventofcode/2021/day-18-Snailfish/part1.py	/^def find_split_value(root_tree) -> Node:$/;"	f
+first	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^    first = second$/;"	v
+first	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^first = 0$/;"	v
+fish_data	adventofcode/2021/day-6-Lanternfish/part2.py	/^fish_data = [int(i) for i in fdata.readline().rstrip().split(',')]$/;"	v
+flashed_simultaneously	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^        flashed_simultaneously = True$/;"	v
+flashed_simultaneously	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^flashed_simultaneously = False$/;"	v
+folds	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^folds = []$/;"	v
+found	adventofcode/2021/day-15-Chiton/part1.py	/^            found = True$/;"	v
+found	adventofcode/2021/day-15-Chiton/part1.py	/^    found = False$/;"	v
+found	adventofcode/2021/day-15-Chiton/part2.py	/^            found = True$/;"	v
+found	adventofcode/2021/day-15-Chiton/part2.py	/^    found = False$/;"	v
+fps	Fourier-series/fourier_series.py	/^fps = 60$/;"	v
+game	adventofcode/2021/day-4-Giant-Squid/part1.py	/^    game = []$/;"	v
+game	adventofcode/2021/day-4-Giant-Squid/part1.py	/^game = []$/;"	v
+game	adventofcode/2021/day-4-Giant-Squid/part2.py	/^    game = []$/;"	v
+game	adventofcode/2021/day-4-Giant-Squid/part2.py	/^game = []$/;"	v
+gamma_rate	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^gamma_rate = ""$/;"	v
+get2DPlace	Game-of-Go-Logic/Board.cpp	/^int Board::get2DPlace(int x, int y) const$/;"	f	class:Board
+get2DPlace	Game-of-Go-Logic/Board.cpp	/^int Board::get2DPlace(std::pair<unsigned int,unsigned int> coord) const$/;"	f	class:Board
+getAntPosition	Langston-Ant/Ant.cpp	/^std::pair<int,int>& Ant::getAntPosition() {return this->_position;}$/;"	f	class:Ant
+getBelongingGroup	Game-of-Go-Logic/Stone.cpp	/^int Stone::getBelongingGroup() const$/;"	f	class:Stone
+getBoard	My-Tetris/Game.cpp	/^Board & Game::getBoard()$/;"	f	class:Game
+getCountInGroup	Game-of-Go-Logic/Group.cpp	/^int Group::getCountInGroup() const$/;"	f	class:Group
+getCounter	Game-of-Go-Logic/Group.cpp	/^int Group::getCounter() {return _count;}$/;"	f	class:Group
+getCounter	Game-of-Go-Logic/Stone.cpp	/^int Stone::getCounter() {return _count;}$/;"	f	class:Stone
+getCurrentStone	Game-of-Go-Logic/Board.cpp	/^Stone* Board::getCurrentStone()$/;"	f	class:Board
+getDirection	Langston-Ant/Ant.cpp	/^std::string Ant::getDirection() const {return this->_direction;}$/;"	f	class:Ant
+getGroup	Game-of-Go-Logic/Group.cpp	/^std::vector<Stone> & Group::getGroup()$/;"	f	class:Group
+getInstruction	CPU-Simulation/main.cpp	/^int getInstruction(int address, int n)$/;"	f
+getLevel	Game-of-Go-Logic/Player.cpp	/^int Player::getLevel() const {$/;"	f	class:Player
+getLiberties	Game-of-Go-Logic/Group.cpp	/^unsigned int Group::getLiberties() const$/;"	f	class:Group
+getName	Game-of-Go-Logic/Player.cpp	/^const string& Player::getName() const$/;"	f	class:Player
+getShape	My-Tetris/Shape.cpp	/^vector< pair<int,int> > & Shape::getShape()$/;"	f	class:Shape
+getSizeX	Langston-Ant/Board.h	/^        unsigned int getSizeX() const {return _mapsize.first;}$/;"	f	class:Board
+getSizeX	My-Tetris/Board.h	/^        unsigned int getSizeX() const {return _sizeX;}$/;"	f	class:Board
+getSizeY	Langston-Ant/Board.h	/^        unsigned int getSizeY() const {return _mapsize.second;}$/;"	f	class:Board
+getSizeY	My-Tetris/Board.h	/^        unsigned int getSizeY() const {return _sizeY;}$/;"	f	class:Board
+getSurrounding	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^def getSurrounding(board, x, y):$/;"	f
+getSurrounding	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^def getSurrounding(board, x, y):$/;"	f
+getSurrounding	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^def getSurrounding(board, x, y):$/;"	f
+getSurrounding	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^def getSurrounding(board, x, y):$/;"	f
+getSurroundingCells	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^def getSurroundingCells(board, x, y):$/;"	f
+get_difficulty	adventofcode/2021/day-15-Chiton/part1.py	/^def get_difficulty(x, y):$/;"	f
+get_difficulty	adventofcode/2021/day-15-Chiton/part2.py	/^def get_difficulty(x, y):$/;"	f
+get_distance	adventofcode/2021/day-15-Chiton/part1.py	/^def get_distance(x, y):$/;"	f
+get_distance	adventofcode/2021/day-15-Chiton/part2.py	/^def get_distance(x, y):$/;"	f
+get_new_end_point_pos	Fourier-series/fourier_series.py	/^    def get_new_end_point_pos(self):$/;"	m	class:RotatingCircle
+get_node_with_smallest_tentative_distance	adventofcode/2021/day-15-Chiton/part1.py	/^def get_node_with_smallest_tentative_distance():$/;"	f
+get_node_with_smallest_tentative_distance	adventofcode/2021/day-15-Chiton/part2.py	/^def get_node_with_smallest_tentative_distance():$/;"	f
+global_counter	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^    global_counter = 0$/;"	v
+global_counter	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^    global_counter = 0$/;"	v
+graph	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^    graph = {}$/;"	v
+graph	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^    graph = {}$/;"	v
+graph_points	Fourier-series/fourier_series.py	/^graph_points = []$/;"	v
+groupNumber	Game-of-Go-Logic/Group.cpp	/^unsigned int Group::groupNumber() const$/;"	f	class:Group
+groupOfCurrentStone	Game-of-Go-Logic/Board.cpp	/^int Board::groupOfCurrentStone()$/;"	f	class:Board
+groups_value	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    groups_value = ""$/;"	v
+handleInput	My-Tetris/Game.cpp	/^void Game::handleInput(char c)$/;"	f	class:Game
+highest_point	adventofcode/2021/day-17-Trick-Shot/part1.py	/^            highest_point = shoot((pos_x, pos_y), (vx, vy), target_area)$/;"	v
+highest_point_overall	adventofcode/2021/day-17-Trick-Shot/part1.py	/^                highest_point_overall = highest_point$/;"	v
+highest_point_overall	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    highest_point_overall = 0$/;"	v
+horizontal	adventofcode/2021/day-2-Dive/part1.py	/^horizontal = 0$/;"	v
+horizontal	adventofcode/2021/day-2-Dive/part2.py	/^horizontal = 0$/;"	v
+i	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^i = 0$/;"	v
+i	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^i = 0$/;"	v
+illegal_parenthesis	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^illegal_parenthesis = []$/;"	v
+illegal_parenthesis	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^illegal_parenthesis = []$/;"	v
+inc_cnt	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^inc_cnt = 0$/;"	v
+inc_cnt	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^inc_cnt = 0$/;"	v
+increase_difficulty	adventofcode/2021/day-15-Chiton/part2.py	/^def increase_difficulty(cave, increase_level):$/;"	f
+initSurround	Minesweeper/main.cpp	/^void initSurround(unsigned int y, unsigned int x)$/;"	f
+initial_node	adventofcode/2021/day-15-Chiton/part1.py	/^    initial_node = (0, 0)$/;"	v
+initial_node	adventofcode/2021/day-15-Chiton/part2.py	/^    initial_node = (0, 0)$/;"	v
+initialised	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^        initialised = True$/;"	v
+initialised	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^initialised = False$/;"	v
+integer	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    integer = int(packet, 16)$/;"	v
+invertColor	Langston-Ant/Board.cpp	/^void Board::invertColor(int x, int y)$/;"	f	class:Board
+invertColor	Langston-Ant/Board.cpp	/^void Board::invertColor(std::pair<int,int> coord)$/;"	f	class:Board
+isBlack	Langston-Ant/Board.cpp	/^bool Board::isBlack(int x, int y)$/;"	f	class:Board
+isBlack	Langston-Ant/Board.cpp	/^bool Board::isBlack(std::pair<int,int> coord)$/;"	f	class:Board
+isWhite	Langston-Ant/Board.cpp	/^bool Board::isWhite(int x, int y)$/;"	f	class:Board
+isWhite	Langston-Ant/Board.cpp	/^bool Board::isWhite(std::pair<int,int> coord)$/;"	f	class:Board
+is_hit	adventofcode/2021/day-17-Trick-Shot/part1.py	/^def is_hit(coords, target_area):$/;"	f
+is_hit	adventofcode/2021/day-17-Trick-Shot/part2.py	/^def is_hit(coords, target_area):$/;"	f
+is_node_twice	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^def is_node_twice(list, node):$/;"	f
+is_something_twice	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^def is_something_twice(list):$/;"	f
+is_visited	adventofcode/2021/day-15-Chiton/part1.py	/^def is_visited(x, y):$/;"	f
+is_visited	adventofcode/2021/day-15-Chiton/part2.py	/^def is_visited(x, y):$/;"	f
+iterations	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^iterations = 10$/;"	v
+iterations	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^iterations = 40$/;"	v
+killStoneAt	Game-of-Go-Logic/Board.cpp	/^void Board::killStoneAt(unsigned int x, unsigned int y)$/;"	f	class:Board
+lanfish_timers	adventofcode/2021/day-6-Lanternfish/part1.py	/^lanfish_timers = [int(i) for i in fdata.readline().rstrip().split(',')]$/;"	v
+largest_magnitude	adventofcode/2021/day-18-Snailfish/part1.py	/^                largest_magnitude = magnitude$/;"	v
+largest_magnitude	adventofcode/2021/day-18-Snailfish/part1.py	/^    largest_magnitude = 0$/;"	v
+least_common	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^least_common = min(polymers, key=polymers.get)$/;"	v
+least_common	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^least_common = min(polymers, key=polymers.get)$/;"	v
+least_common_for_i	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^        least_common_for_i = '1' if ones_count[i] < zeros_count[i] else '0'$/;"	v
+left	My-Tetris/Shape.cpp	/^void Shape::left()$/;"	f	class:Shape
+level	Game-of-Go-Logic/Player.h	/^	int level;$/;"	m	class:Player
+lifetime	adventofcode/2021/day-6-Lanternfish/part2.py	/^lifetime = [0 for i in range(0, 9)]$/;"	v
+lifetime_ptr	adventofcode/2021/day-6-Lanternfish/part2.py	/^    lifetime_ptr = day % 9 #marker of fish with zero lifetime$/;"	v
+line	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^    line = int(line.rstrip())$/;"	v
+line	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^    line = int(line.rstrip())$/;"	v
+line	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-15-Chiton/part1.py	/^        line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-15-Chiton/part2.py	/^        line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-18-Snailfish/part1.py	/^        line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-2-Dive/part1.py	/^    line = line.rstrip()$/;"	v
+line	adventofcode/2021/day-2-Dive/part2.py	/^    line = line.rstrip()$/;"	v
+linearize	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^def linearize(input):$/;"	f
+list	adventofcode/2021/day-12-Passage-Pathing/test.py	/^list = ['a', 'a', 'b', 'A', 'A', "start"]$/;"	v
+list_to_string	adventofcode/2021/day-18-Snailfish/part1.py	/^def list_to_string(lst) -> str:$/;"	f
+lowland_size	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^    lowland_size = 0$/;"	v
+lowland_sizes	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^lowland_sizes = []$/;"	v
+lowlands	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^lowlands = []$/;"	v
+lowlands	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^lowlands = []$/;"	v
+m	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        m = re.search('.*((x|y)=[0-9]+)', line)$/;"	v
+magnitude	adventofcode/2021/day-18-Snailfish/part1.py	/^            magnitude = calculate_magnitude(string_to_tree(sum))$/;"	v
+magnitude	adventofcode/2021/day-18-Snailfish/part1.py	/^    magnitude = calculate_magnitude(string_to_tree(sum))$/;"	v
+main	CPU-Simulation/main.cpp	/^int main()$/;"	f
+main	Game-of-Go-Logic/EclipseTest2.cpp	/^int main()$/;"	f
+main	Langston-Ant/main.cpp	/^int main()$/;"	f
+main	Minesweeper/main.cpp	/^int main()$/;"	f
+main	My-Tetris/main.cpp	/^int main()$/;"	f
+main	adventofcode/2021/day-6-Lanternfish/part1-dynamic.cpp	/^int main(int argc, char *argv[]) $/;"	f
+main	adventofcode/2021/day-6-Lanternfish/part1.cpp	/^int main(int argc, char *argv[]) $/;"	f
+mark_number	adventofcode/2021/day-4-Giant-Squid/part1.py	/^def mark_number(game, number):$/;"	f
+mark_number	adventofcode/2021/day-4-Giant-Squid/part2.py	/^def mark_number(game, number):$/;"	f
+marked	adventofcode/2021/day-4-Giant-Squid/part1.py	/^        marked = mark_number(game, number)$/;"	v
+marked	adventofcode/2021/day-4-Giant-Squid/part2.py	/^        marked = mark_number(game, number)$/;"	v
+max_allowed_count_on_stack	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^max_allowed_count_on_stack = 2$/;"	v
+max_position	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^max_position = max(positions)$/;"	v
+max_sub_pointer	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    max_sub_pointer = 0$/;"	v
+mergeGroups	Game-of-Go-Logic/Group.cpp	/^void Group::mergeGroups(Group &g)$/;"	f	class:Group
+mid	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^                mid = list((set(segments['8']).difference(code)))$/;"	v
+mid	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    mid = []$/;"	v
+milliseconds	Fourier-series/fourier_series.py	/^    milliseconds = clock.tick(fps)  # milliseconds passed since last frame$/;"	v
+min_pos	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^        min_pos = pos$/;"	v
+min_pos	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^min_pos = math.inf$/;"	v
+min_pos	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^        min_pos = tarpos$/;"	v
+min_pos	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^min_pos = math.inf$/;"	v
+min_sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^        min_sum = sum$/;"	v
+min_sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^min_sum = math.inf$/;"	v
+min_sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^        min_sum = sum$/;"	v
+min_sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^min_sum = math.inf$/;"	v
+most_common	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^most_common = max(polymers, key=polymers.get)$/;"	v
+most_common	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^most_common = max(polymers, key=polymers.get)$/;"	v
+moveForward	Langston-Ant/Ant.cpp	/^bool Ant::moveForward()$/;"	f	class:Ant
+move_wheel	Enigma/main.py	/^    def move_wheel(self):$/;"	m	class:Wheel
+n	Fourier-series/fourier_series.py	/^n = 1$/;"	v
+name	Game-of-Go-Logic/Player.h	/^	string name;$/;"	m	class:Player
+new	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^    new = ""$/;"	v
+new	adventofcode/2021/day-6-Lanternfish/part1.py	/^            new = True$/;"	v
+new	adventofcode/2021/day-6-Lanternfish/part1.py	/^        new = False$/;"	v
+newRandom	My-Tetris/Game.cpp	/^Shape* Game::newRandom()$/;"	f	class:Game
+new_distance	adventofcode/2021/day-15-Chiton/part1.py	/^                new_distance = 0$/;"	v
+new_distance	adventofcode/2021/day-15-Chiton/part2.py	/^                new_distance = 0$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^                        new_found = True$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^        new_found = False$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^    new_found = True$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^                        new_found = True$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^        new_found = False$/;"	v
+new_found	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^    new_found = True$/;"	v
+new_over_nine	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^    new_over_nine = []$/;"	v
+new_over_nine	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^    new_over_nine = []$/;"	v
+new_pair_1	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^        new_pair_1 = pair[0] + rules[pair]$/;"	v
+new_pair_2	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^        new_pair_2 = rules[pair] + pair[1]$/;"	v
+new_right_board	adventofcode/2021/day-15-Chiton/part2.py	/^                new_right_board = increase_difficulty(copy.deepcopy(board), x_cnt + y_cnt)$/;"	v
+newf	adventofcode/2021/day-6-Lanternfish/part2.py	/^        newf = False$/;"	v
+newf	adventofcode/2021/day-6-Lanternfish/part2.py	/^        newf = True$/;"	v
+newf	adventofcode/2021/day-6-Lanternfish/part2.py	/^newf = False$/;"	v
+newline	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^    newline = []$/;"	v
+newline	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^    newline = []$/;"	v
+num_list	adventofcode/2021/day-18-Snailfish/part1.py	/^    num_list = []$/;"	v
+num_of_points_to_draw	Fourier-series/fourier_series.py	/^num_of_points_to_draw = 1000 * num_of_sinusoids$/;"	v
+num_of_sinusoids	Fourier-series/fourier_series.py	/^num_of_sinusoids = 20  # Accuracy$/;"	v
+octopuses	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^octopuses = []$/;"	v
+octopuses	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^octopuses = []$/;"	v
+ones_counts	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^        ones_counts = [0 for i in range(0, data_len)]$/;"	v
+ones_counts	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^ones_counts = []$/;"	v
+open	adventofcode/2021/day-9-Smoke-Basin/part2.py	/^open = []$/;"	v
+out	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    out = []$/;"	v
+outOfBoard	Game-of-Go-Logic/Board.cpp	/^bool Board::outOfBoard(std::pair<int, int> coord) const$/;"	f	class:Board
+outOfBoard	Game-of-Go-Logic/Board.cpp	/^bool Board::outOfBoard(unsigned int x, unsigned int y) const$/;"	f	class:Board
+outer_closed	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^    outer_closed = []$/;"	v
+outer_closed	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^    outer_closed = ["start"]$/;"	v
+oxygen_data	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^oxygen_data = report_data.copy()$/;"	v
+packet	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    packet = fdata.readline().rstrip()$/;"	v
+packet	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^    packet = fdata.readline().rstrip()$/;"	v
+parenthesis_pairs	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^parenthesis_pairs = {'(':')', '[':']', '{':'}', '<':'>'}$/;"	v
+parenthesis_pairs	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^parenthesis_pairs = {'(':')', '[':']', '{':'}', '<':'>'}$/;"	v
+parenthesis_score	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^parenthesis_score = {')':1, ']':2, '}':3, '>':4}$/;"	v
+parse_packet	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^def parse_packet(pointer_position, bit_length=None, number_of_subpackets=None):$/;"	f
+parse_packet	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^def parse_packet(pointer_start):$/;"	f
+passed	adventofcode/2021/day-16-Packet-Decoder/part2.py	/^    passed = 0$/;"	v
+passed	adventofcode/2021/day-18-Snailfish/part1.py	/^    passed = 0$/;"	v
+placeShape	My-Tetris/Board.cpp	/^void Board::placeShape(Shape *s)$/;"	f	class:Board
+placeStoneTo	Game-of-Go-Logic/Board.cpp	/^void Board::placeStoneTo(unsigned int x, unsigned int y)$/;"	f	class:Board
+playtime	Fourier-series/fourier_series.py	/^playtime = 0$/;"	v
+plugboard	Enigma/main.py	/^    plugboard = Plugboard(plugboard_setting)$/;"	v	class:Enigma
+plugboard_setting	Enigma/main.py	/^    plugboard_setting = [('A', 'G'), ('F', 'Y')]$/;"	v	class:Enigma
+pointer	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    pointer = 0$/;"	v
+points	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^points = []$/;"	v
+pole	Minesweeper/main.cpp	/^vector<vector<char> > pole;$/;"	v
+polymer_counter	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^polymer_counter = {}$/;"	v
+polymer_duplicates	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^polymer_duplicates = {}$/;"	v
+polymers	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^polymers = {}$/;"	v
+polymers	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^polymers = {}$/;"	v
+pos_x	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    pos_x = 0$/;"	v
+pos_x	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    pos_x = 0$/;"	v
+pos_y	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    pos_y = 0$/;"	v
+pos_y	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    pos_y = 0$/;"	v
+positions	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^positions = [int(i) for i in fdata.readline().rstrip().split(',')]$/;"	v
+positions	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^positions = [int(i) for i in fdata.readline().rstrip().split(',')]$/;"	v
+possible_velocities	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    possible_velocities = []$/;"	v
+possible_velocity	adventofcode/2021/day-17-Trick-Shot/part2.py	/^            possible_velocity = shoot((pos_x, pos_y), (vx, vy), target_area)$/;"	v
+prev_circle	Fourier-series/fourier_series.py	/^    prev_circle = current_circle$/;"	v
+prev_circle	Fourier-series/fourier_series.py	/^prev_circle = None$/;"	v
+prev_x	adventofcode/2021/day-6-Lanternfish/part2.py	/^        prev_x = lifetime[lifetime_ptr]$/;"	v
+prev_x	adventofcode/2021/day-6-Lanternfish/part2.py	/^prev_x = 0$/;"	v
+printGoban	Game-of-Go-Logic/Board.cpp	/^void Board::printGoban() const$/;"	f	class:Board
+printGroups	Game-of-Go-Logic/Board.cpp	/^void Board::printGroups() const$/;"	f	class:Board
+printHistory	Game-of-Go-Logic/Board.cpp	/^void Board::printHistory() const$/;"	f	class:Board
+printRegisters	CPU-Simulation/main.cpp	/^void printRegisters()$/;"	f
+printStones	Game-of-Go-Logic/Group.cpp	/^void Group::printStones() const$/;"	f	class:Group
+print_board	adventofcode/2021/day-4-Giant-Squid/part1.py	/^def print_board(game):$/;"	f
+print_board	adventofcode/2021/day-4-Giant-Squid/part2.py	/^def print_board(game):$/;"	f
+process_input	Enigma/main.py	/^    def process_input(self, inp):$/;"	m	class:Plugboard
+processed	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^    processed = []  # processed cells with value greater than 9$/;"	v
+processed	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^    processed = []  # processed cells with value greater than 9$/;"	v
+program	CPU-Simulation/main.cpp	/^int program[] = {299, 492, 495, 399, 492, 495, 399, 283, 279, 689, 78, 100, 000, 000, 000};$/;"	v
+pushBoardDown	My-Tetris/Board.cpp	/^void Board::pushBoardDown(int od, int oKolik)$/;"	f	class:Board
+radius	Fourier-series/fourier_series.py	/^    radius = (100 * (4 \/ (n * math.pi)))$/;"	v
+recursive	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^def recursive(level, node, current_closed):$/;"	f
+recursive	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^def recursive(level, node, current_closed):$/;"	f
+reduce_tree	adventofcode/2021/day-18-Snailfish/part1.py	/^def reduce_tree(root_tree):$/;"	f
+reflector	Enigma/main.py	/^    reflector = Reflector(wheel_reflector_wiring)$/;"	v	class:Enigma
+render	Langston-Ant/Game.cpp	/^void Game::render()$/;"	f	class:Game
+render	My-Tetris/Game.cpp	/^void Game::render()$/;"	f	class:Game
+report_data	adventofcode/2021/day-3-Binary-Diagnostic/part2.py	/^report_data = []$/;"	v
+result	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^result = int(gamma_rate, 2) * int(epsilon_rate, 2)$/;"	v
+result	adventofcode/2021/day-9-Smoke-Basin/part1.py	/^result = sum([i+1 for i in lowlands])$/;"	v
+right	My-Tetris/Shape.cpp	/^void Shape::right()$/;"	f	class:Shape
+rotate	My-Tetris/Shape.cpp	/^void Shape::rotate()$/;"	f	class:Shape
+rstack	adventofcode/2021/day-12-Passage-Pathing/part1.py	/^    rstack = []$/;"	v
+rstack	adventofcode/2021/day-12-Passage-Pathing/part2.py	/^    rstack = []$/;"	v
+rules	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^rules = {}$/;"	v
+rules	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^rules = {}$/;"	v
+run	Fourier-series/fourier_series.py	/^run = True$/;"	v
+run	Langston-Ant/Game.cpp	/^void Game::run()$/;"	f	class:Game
+run	My-Tetris/Game.cpp	/^void Game::run()$/;"	f	class:Game
+say	Game-of-Go-Logic/Player.cpp	/^void Player::say(const string &speech)$/;"	f	class:Player
+score	My-Tetris/Game.cpp	/^unsigned int Game::score() const$/;"	f	class:Game
+score	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^score = 0$/;"	v
+score	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^    score = 0$/;"	v
+score_parenthesis	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^score_parenthesis = {')':3, ']':57, '}':1197, '>':25137}$/;"	v
+scout	Game-of-Go-Logic/Board.cpp	/^void Board::scout(int x, int y, int xx, int yy)$/;"	f	class:Board
+screen	Fourier-series/fourier_series.py	/^screen = pygame.display.set_mode((screen_width, screen_height))$/;"	v
+screen_height	Fourier-series/fourier_series.py	/^screen_height = 1000$/;"	v
+screen_width	Fourier-series/fourier_series.py	/^screen_width = 1400$/;"	v
+second	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^    second = sliding_sum$/;"	v
+second	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^second = 0$/;"	v
+seconds	Fourier-series/fourier_series.py	/^    seconds = milliseconds \/ 1000.0  # seconds passed since last frame (float)$/;"	v
+segments	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    segments = {'0': [], '1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []}$/;"	v
+setBelongingGroup	Game-of-Go-Logic/Stone.cpp	/^void Stone::setBelongingGroup(int g)$/;"	f	class:Stone
+setBoardAt	Langston-Ant/Board.h	/^        void setBoardAt(int y, int x, char c) {_board.at(y).at(x) = c;}$/;"	f	class:Board
+setBoardAt	Langston-Ant/Board.h	/^        void setBoardAt(std::pair<int,int> coord, char c) {_board.at(coord.second).at(coord.first) = c;}$/;"	f	class:Board
+setBoardAt	My-Tetris/Board.h	/^        void setBoardAt(int y, int x, char c) {_board.at(y).at(x) = c;}$/;"	f	class:Board
+setColor	Game-of-Go-Logic/Stone.cpp	/^void Stone::setColor(std::string color)$/;"	f	class:Stone
+setCoords	Game-of-Go-Logic/Stone.cpp	/^void Stone::setCoords(int int1, int int2)$/;"	f	class:Stone
+setCoords	Game-of-Go-Logic/Stone.cpp	/^void Stone::setCoords(std::pair<int, int> pair)$/;"	f	class:Stone
+setGroupNumber	Game-of-Go-Logic/Group.cpp	/^void Group::setGroupNumber(unsigned int gn)$/;"	f	class:Group
+setLevel	Game-of-Go-Logic/Player.cpp	/^void Player::setLevel(int level) {$/;"	f	class:Player
+setLiberties	Game-of-Go-Logic/Group.cpp	/^void Group::setLiberties(int lib)$/;"	f	class:Group
+setMine	Minesweeper/main.cpp	/^void setMine(unsigned int y, unsigned int x)$/;"	f
+setName	Game-of-Go-Logic/Player.cpp	/^void Player::setName(const string& name)$/;"	f	class:Player
+setRegister	CPU-Simulation/main.cpp	/^void setRegister(int reg, int value)$/;"	f
+setScore	My-Tetris/Game.cpp	/^void Game::setScore(unsigned int newScore)$/;"	f	class:Game
+shift_speed	Fourier-series/fourier_series.py	/^shift_speed = 1 \/ (num_of_sinusoids + 1)$/;"	v
+shoot	adventofcode/2021/day-17-Trick-Shot/part1.py	/^def shoot(initial_position, initial_velocity, target_area):$/;"	f
+shoot	adventofcode/2021/day-17-Trick-Shot/part2.py	/^def shoot(initial_position, initial_velocity, target_area):$/;"	f
+simulation_time	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^simulation_time = 200$/;"	v
+simulation_time	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^simulation_time = 1$/;"	v
+size	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^size = 1000$/;"	v
+size	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^size = 1000$/;"	v
+sizeX	Minesweeper/main.cpp	/^unsigned int sizeX = 8;$/;"	v
+sizeY	Minesweeper/main.cpp	/^unsigned int sizeY = 8;$/;"	v
+size_scale_const	Fourier-series/fourier_series.py	/^size_scale_const = 100$/;"	v
+size_x	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        size_x = size_x \/\/ 2$/;"	v
+size_x	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^size_x = (first_x * 2) + 1$/;"	v
+size_x	adventofcode/2021/day-15-Chiton/part1.py	/^    size_x = len(board[0])$/;"	v
+size_x	adventofcode/2021/day-15-Chiton/part2.py	/^    size_x = len(board)$/;"	v
+size_y	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        size_y = size_y \/\/ 2$/;"	v
+size_y	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^size_y = (first_y * 2) + 1$/;"	v
+size_y	adventofcode/2021/day-15-Chiton/part1.py	/^    size_y = len(board)$/;"	v
+size_y	adventofcode/2021/day-15-Chiton/part2.py	/^    size_y = len(board[0])$/;"	v
+sliding_sum	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^    sliding_sum = sum(data)$/;"	v
+slope	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^            slope = "decreasing"$/;"	v
+slope	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^            slope = "increasing"$/;"	v
+slope	adventofcode/2021/day-1-Sonar-Sweep/part1.py	/^    slope = ""$/;"	v
+split	adventofcode/2021/day-8-Seven-Segment-Search/part1.py	/^    split = line.rstrip().split('|')$/;"	v
+split	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    split = line.rstrip().split('|')$/;"	v
+split_node_value	adventofcode/2021/day-18-Snailfish/part1.py	/^def split_node_value(node):$/;"	f
+splitted	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        splitted = line.split(',')$/;"	v
+splitted	adventofcode/2021/day-13-Transparent-Origami/part1.py	/^        splitted = m.group(1).split('=')$/;"	v
+stack	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^    stack = []$/;"	v
+stack	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^    stack = []$/;"	v
+start_p	adventofcode/2021/day-5-Hydrothermal-Venture/part1.py	/^    start_p = [int(start.split(',')[0]), int(start.split(',')[1])]$/;"	v
+start_p	adventofcode/2021/day-5-Hydrothermal-Venture/part2.py	/^    start_p = [int(start.split(',')[0]), int(start.split(',')[1])]$/;"	v
+stoneAt	Game-of-Go-Logic/Board.cpp	/^Stone* Board::stoneAt(std::pair<unsigned int, unsigned int> &pair)$/;"	f	class:Board
+stoneAt	Game-of-Go-Logic/Board.cpp	/^Stone* Board::stoneAt(unsigned int x, unsigned int y)$/;"	f	class:Board
+string_to_tree	adventofcode/2021/day-18-Snailfish/part1.py	/^def string_to_tree(data_str) -> Node:$/;"	f
+subs	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    subs = 0$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^            sum = add_numbers(first, second)$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^            sum = add_numbers(second, first)$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^        sum = add_numbers(sum, line)$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = add_numbers("[1,1]", "[2,2]")$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = add_numbers(sum, "[3,3]")$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = add_numbers(sum, "[4,4]")$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = add_numbers(sum, "[5,5]")$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = add_numbers(sum, "[6,6]")$/;"	v
+sum	adventofcode/2021/day-18-Snailfish/part1.py	/^    sum = fdata.readline().rstrip()$/;"	v
+sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part1.py	/^    sum = 0$/;"	v
+sum	adventofcode/2021/day-7-The-Treachery-of-Whales/part2.py	/^    sum = 0$/;"	v
+sum_of_fish	adventofcode/2021/day-6-Lanternfish/part2.py	/^sum_of_fish = 0$/;"	v
+sum_of_flashes	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^sum_of_flashes = 0$/;"	v
+sum_of_flashes	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^sum_of_flashes = 0$/;"	v
+summ	adventofcode/2021/day-4-Giant-Squid/part1.py	/^summ = count_unmarked(win_game)$/;"	v
+summ	adventofcode/2021/day-4-Giant-Squid/part2.py	/^summ = count_unmarked(win_game)$/;"	v
+surrounding	adventofcode/2021/day-11-Dumbo-Octopus/part1.py	/^            surrounding = getSurrounding(octopuses, newover[0], newover[1])$/;"	v
+surrounding	adventofcode/2021/day-11-Dumbo-Octopus/part2.py	/^            surrounding = getSurrounding(octopuses, newover[0], newover[1])$/;"	v
+sync_pos_with_parent	Fourier-series/fourier_series.py	/^    def sync_pos_with_parent(self):$/;"	m	class:RotatingCircle
+target_area	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    target_area = ([i for i in range(241, 273 + 1)], [i for i in range(-97, -63 +1)])$/;"	v
+target_area	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    target_area = ([i for i in range(241, 273 + 1)], [i for i in range(-97, -63 +1)])$/;"	v
+target_node	adventofcode/2021/day-15-Chiton/part1.py	/^    target_node = (size_x-1, size_y-1)$/;"	v
+target_node	adventofcode/2021/day-15-Chiton/part2.py	/^    target_node = (size_x-1, size_y-1)$/;"	v
+template	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^    template = new$/;"	v
+template	adventofcode/2021/day-14-Extended-Polymerization/part1.py	/^template = fdata.readline().rstrip()$/;"	v
+template	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^template = fdata.readline().rstrip()$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part1.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x + 1, y)$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part1.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x, y + 1)$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part2.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x + 1, y)$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part2.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x - 1, y)$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part2.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x, y + 1)$/;"	v
+tentative_distance	adventofcode/2021/day-15-Chiton/part2.py	/^                tentative_distance = get_distance(x, y) + get_difficulty(x, y - 1)$/;"	v
+tentative_initial_value	adventofcode/2021/day-15-Chiton/part1.py	/^    tentative_initial_value = math.inf$/;"	v
+tentative_initial_value	adventofcode/2021/day-15-Chiton/part2.py	/^    tentative_initial_value = math.inf$/;"	v
+tmp	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^        tmp = deep_copy[pair]$/;"	v
+tmp_counter	adventofcode/2021/day-14-Extended-Polymerization/part2.py	/^    tmp_counter = {}$/;"	v
+toInt	CPU-Simulation/main.cpp	/^int toInt(char num)$/;"	f
+top	adventofcode/2021/day-10-Syntax-Scoring/part1.py	/^        top = stack.pop()$/;"	v
+top	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^            top = stack.pop()$/;"	v
+top	adventofcode/2021/day-10-Syntax-Scoring/part2.py	/^        top = stack.pop()$/;"	v
+topleft	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^                topleft = list((set(topleft_and_mid).difference(mid)))$/;"	v
+topleft	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    topleft = []$/;"	v
+topleft_and_mid	adventofcode/2021/day-8-Seven-Segment-Search/part2.py	/^    topleft_and_mid = list((set(segments['4']).difference(segments['7'])))$/;"	v
+traverse_tree	adventofcode/2021/day-18-Snailfish/part1.py	/^def traverse_tree(root) -> None:$/;"	f
+tree_to_str	adventofcode/2021/day-18-Snailfish/part1.py	/^def tree_to_str(tree_root, result_string):$/;"	f
+turnLeft	Langston-Ant/Ant.cpp	/^void Ant::turnLeft()$/;"	f	class:Ant
+turnRight	Langston-Ant/Ant.cpp	/^void Ant::turnRight()$/;"	f	class:Ant
+update	Fourier-series/fourier_series.py	/^    def update(self, delta_time):$/;"	m	class:RotatingCircle
+value	adventofcode/2021/day-2-Dive/part2.py	/^    value = int(value)$/;"	v
+velocity_x	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    velocity_x = 6$/;"	v
+velocity_x	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    velocity_x = 6$/;"	v
+velocity_y	adventofcode/2021/day-17-Trick-Shot/part1.py	/^    velocity_y = 9$/;"	v
+velocity_y	adventofcode/2021/day-17-Trick-Shot/part2.py	/^    velocity_y = 9$/;"	v
+versions_sum	adventofcode/2021/day-16-Packet-Decoder/part1.py	/^    versions_sum = 0$/;"	v
+visited	adventofcode/2021/day-15-Chiton/part1.py	/^    visited = False$/;"	v
+visited	adventofcode/2021/day-15-Chiton/part2.py	/^    visited = False$/;"	v
+wheel1	Enigma/main.py	/^    wheel1 = Wheel(wheel_1_wiring, wheel_1_tooth, wheel_1_offset)$/;"	v	class:Enigma
+wheel2	Enigma/main.py	/^    wheel2 = Wheel(wheel_2_wiring, wheel_2_tooth, wheel_2_offset)$/;"	v	class:Enigma
+wheel3	Enigma/main.py	/^    wheel3 = Wheel(wheel_3_wiring, wheel_3_tooth, wheel_3_offset)$/;"	v	class:Enigma
+wheel_1_offset	Enigma/main.py	/^    wheel_1_offset = 0$/;"	v	class:Enigma
+wheel_1_tooth	Enigma/main.py	/^wheel_1_tooth = 0 #turn every char$/;"	v
+wheel_1_wiring	Enigma/main.py	/^wheel_1_wiring = [$/;"	v
+wheel_2_offset	Enigma/main.py	/^    wheel_2_offset = 13$/;"	v	class:Enigma
+wheel_2_tooth	Enigma/main.py	/^wheel_2_tooth = 8$/;"	v
+wheel_2_wiring	Enigma/main.py	/^wheel_2_wiring = [$/;"	v
+wheel_3_offset	Enigma/main.py	/^    wheel_3_offset = 24$/;"	v	class:Enigma
+wheel_3_tooth	Enigma/main.py	/^wheel_3_tooth = 21$/;"	v
+wheel_3_wiring	Enigma/main.py	/^wheel_3_wiring = [$/;"	v
+wheel_reflector_wiring	Enigma/main.py	/^wheel_reflector_wiring = [$/;"	v
+win	adventofcode/2021/day-4-Giant-Squid/part1.py	/^        win = check_win(game, marked)$/;"	v
+win	adventofcode/2021/day-4-Giant-Squid/part1.py	/^win = False$/;"	v
+win	adventofcode/2021/day-4-Giant-Squid/part2.py	/^        win = check_win(game, marked)$/;"	v
+win	adventofcode/2021/day-4-Giant-Squid/part2.py	/^win = False$/;"	v
+win_game	adventofcode/2021/day-4-Giant-Squid/part1.py	/^            win_game = game$/;"	v
+win_game	adventofcode/2021/day-4-Giant-Squid/part1.py	/^win_game = None$/;"	v
+win_game	adventofcode/2021/day-4-Giant-Squid/part2.py	/^            win_game = game$/;"	v
+win_game	adventofcode/2021/day-4-Giant-Squid/part2.py	/^win_game = None$/;"	v
+win_game_cnt	adventofcode/2021/day-4-Giant-Squid/part2.py	/^win_game_cnt = 0$/;"	v
+win_num	adventofcode/2021/day-4-Giant-Squid/part1.py	/^            win_num = number$/;"	v
+win_num	adventofcode/2021/day-4-Giant-Squid/part1.py	/^win_num = None$/;"	v
+win_num	adventofcode/2021/day-4-Giant-Squid/part2.py	/^            win_num = number$/;"	v
+win_num	adventofcode/2021/day-4-Giant-Squid/part2.py	/^win_num = None$/;"	v
+win_size	adventofcode/2021/day-1-Sonar-Sweep/part2.py	/^win_size = 3  # size of sliding window$/;"	v
+winned_games	adventofcode/2021/day-4-Giant-Squid/part2.py	/^winned_games = ['-' for i in range(0, len(bingo_games))]$/;"	v
+x	adventofcode/2021/day-15-Chiton/part1.py	/^        x = current[0]$/;"	v
+x	adventofcode/2021/day-15-Chiton/part2.py	/^        x = current[0]$/;"	v
+y	adventofcode/2021/day-15-Chiton/part1.py	/^        y = current[1]$/;"	v
+y	adventofcode/2021/day-15-Chiton/part2.py	/^        y = current[1]$/;"	v
+zero_counts	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^        zero_counts = [0 for i in range(0, data_len)]$/;"	v
+zero_counts	adventofcode/2021/day-3-Binary-Diagnostic/part1.py	/^zero_counts = []$/;"	v
+~Ant	Langston-Ant/Ant.cpp	/^Ant::~Ant()$/;"	f	class:Ant
+~Board	Game-of-Go-Logic/Board.cpp	/^Board::~Board()$/;"	f	class:Board
+~Board	Langston-Ant/Board.cpp	/^Board::~Board()$/;"	f	class:Board
+~Board	My-Tetris/Board.cpp	/^Board::~Board()$/;"	f	class:Board
+~Game	Langston-Ant/Game.cpp	/^Game::~Game()$/;"	f	class:Game
+~Game	My-Tetris/Game.cpp	/^Game::~Game()$/;"	f	class:Game
+~Group	Game-of-Go-Logic/Group.cpp	/^Group::~Group()$/;"	f	class:Group
+~Player	Game-of-Go-Logic/Player.cpp	/^Player::~Player() {$/;"	f	class:Player
+~Shape	My-Tetris/Shape.cpp	/^Shape::~Shape()$/;"	f	class:Shape
+~Stone	Game-of-Go-Logic/Stone.cpp	/^Stone::~Stone() {$/;"	f	class:Stone
