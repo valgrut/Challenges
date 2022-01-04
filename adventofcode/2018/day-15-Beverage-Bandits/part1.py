@@ -1,4 +1,5 @@
 from dataclasses import dataclass        
+import math
 import copy
 import random
 
@@ -22,9 +23,17 @@ def drawmap(map):
 
 
 def mark_path(renderedmap, path):
-    for node in path:
+    # for node in path:
+
+    # Mark everything from starting and target location
+    for node in path[1:-1]:
         renderedmap[node[0]][node[1]] = 'x'
-    drawmap(renderedmap)
+    # drawmap(renderedmap)
+
+
+def distance(adj_node, destination):
+    # return abs(adj_node[0] - destination.x) + abs(adj_node[1] - destination.y)
+    return math.sqrt((adj_node[0] - destination.x)**2 + (adj_node[1] - destination.y)**2)
 
 
 def BFS(renderedmap, source, destination) -> list:
@@ -43,44 +52,44 @@ def BFS(renderedmap, source, destination) -> list:
         closed.append(exploding_node)
         
         adjacent_nodes = [(exploding_node[0]-1, exploding_node[1]), (exploding_node[0]+1, exploding_node[1]), (exploding_node[0], exploding_node[1]-1), (exploding_node[0], exploding_node[1]+1)]
+
         # For each adjacent node
-        for coord in adjacent_nodes:
-            # If coord is Visited
-            if coord in closed:
+        for adjacent_node in adjacent_nodes:
+
+            # If adjacent_node is Visited
+            if adjacent_node in closed:
                 continue
+            
+            # Do not wait until this node is exploded, mark is as added to open now.
+            closed.append(adjacent_node)
 
             new_path = copy.deepcopy(current_path)
 
             # Check, if some adjacent tile is destination tile.
-            if coord[0] == destination.x and coord[1] == destination.y:
-                new_path.append(coord)
+            if adjacent_node[0] == destination.x and adjacent_node[1] == destination.y:
+                new_path.append(adjacent_node)
                 return new_path
 
             # Check that new node is not already in current path (looping)
-            if coord in current_path:
+            if adjacent_node in current_path:
                 continue
             
             # Check that adjacent node is not Unit or Wall
-            if renderedmap[coord[0]][coord[1]] in ['#', 'E', 'G']:
+            if renderedmap[adjacent_node[0]][adjacent_node[1]] in ['#', 'E', 'G']:
                 continue
 
-            # This coord is not already in path, so we can append it to end.
-            new_path.append(coord)
+            # This adjacent_node is not already in path, so we can append it to end.
+            new_path.append(adjacent_node)
 
-            # Check whether there is not shorter path in open list leading to this adjacent node.
-            for path_in_open in open:
-                if coord == path_in_open[-1] and len(path_in_open) <= len(new_path):
-                    # print("open:", coord, "is equal", path_in_open[-1], "and ", len(path_in_open), "is leq than", len(new_path))
-                    continue
-            
-            # Adjacent node (coord) is OK
+            # Adjacent node (adjacent_node) is OK
             open.append(new_path)
 
     return []
 
+
 if __name__ == "__main__":
-    # fdata = open("input.txt", 'r')
-    fdata = open("input1.txt", 'r')
+    fdata = open("input.txt", 'r')
+    # fdata = open("input1.txt", 'r')
 
     entities = []
     map = []
@@ -128,6 +137,8 @@ if __name__ == "__main__":
         turn += 1
     
     # BFS test
-    path = BFS(rendermap, entities[0], entities[8])
+    path = BFS(rendermap, entities[5], entities[16])
+    drawmap(rendermap)
     mark_path(rendermap, path)
+    drawmap(rendermap)
     
