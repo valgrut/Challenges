@@ -34,26 +34,21 @@ def BFS(renderedmap, source, destination) -> list:
     if path is [], no path leads from src to dst.
     """
 
-    # TODO: Optimalizovat, zjistit, proc je to tak pomale.
-
     open = []
     closed = []
     open.append([source.coords()])
     while len(open) > 0:
-        print(len(open), len(closed))
         current_path = open.pop(0)
         exploding_node = current_path[-1]
-        # closed.append(current_path)
         closed.append(exploding_node)
         
         adjacent_nodes = [(exploding_node[0]-1, exploding_node[1]), (exploding_node[0]+1, exploding_node[1]), (exploding_node[0], exploding_node[1]-1), (exploding_node[0], exploding_node[1]+1)]
-        
+        # For each adjacent node
         for coord in adjacent_nodes:
             # If coord is Visited
             if coord in closed:
                 continue
 
-            # print(coord, "from", adjacent_nodes)
             new_path = copy.deepcopy(current_path)
 
             # Check, if some adjacent tile is destination tile.
@@ -68,8 +63,6 @@ def BFS(renderedmap, source, destination) -> list:
             # Check that adjacent node is not Unit or Wall
             if renderedmap[coord[0]][coord[1]] in ['#', 'E', 'G']:
                 continue
-            
-            
 
             # This coord is not already in path, so we can append it to end.
             new_path.append(coord)
@@ -80,12 +73,6 @@ def BFS(renderedmap, source, destination) -> list:
                     # print("open:", coord, "is equal", path_in_open[-1], "and ", len(path_in_open), "is leq than", len(new_path))
                     continue
             
-            # Check whether there is not shorter path in closed list leading to this adjacent node.
-            # for path_in_closed in closed:
-                # if coord == path_in_closed[-1] and len(path_in_closed) < len(new_path):
-                    # print("closed:",coord, "is equal", path_in_closed[-1], "and ", len(path_in_closed), "is less than", len(new_path))
-                    # continue
-
             # Adjacent node (coord) is OK
             open.append(new_path)
 
@@ -100,11 +87,10 @@ if __name__ == "__main__":
     # Init map and entities
     for i, line in enumerate(fdata):
         line = line.rstrip()
-        maprow = []
-        # map.append(list(line))
+        map_row = []
         for j, c in enumerate(line):
             if c != '#' and c != '.':
-                maprow.append('.')
+                map_row.append('.')
                 newentity = Entity()
                 newentity.c = c
                 newentity.x = i
@@ -113,20 +99,13 @@ if __name__ == "__main__":
                 newentity.attack = 3
                 entities.append(newentity)
             else:
-                maprow.append(c)
-        map.append(maprow)
-    
-    # Check that loading is good.
-    # drawmap(map)
-    # rendermap = copy.deepcopy(map)
-    #[Radek][Sloupec]
-    # rendermap[2][1] = 'A'
-    # drawmap(rendermap)
-    # drawmap(map)
+                map_row.append(c)
+        map.append(map_row)
     
     # draw entities to map (copy empty map and draw entities to that map according to if they are alive or not)
     # analyze map - neighbours of current entity
     # find shortest path to enemies, and find, which one is closest
+    # And if some are same distance, pick one according to directions (top, bottom, left, right)
 
     # Game loop
     allkilled = False
@@ -148,8 +127,7 @@ if __name__ == "__main__":
             break
         turn += 1
     
-    print(entities[0])
-    print(entities[1])
-    path = BFS(rendermap, entities[0], entities[5])
+    # BFS test
+    path = BFS(rendermap, entities[0], entities[8])
     mark_path(rendermap, path)
     
