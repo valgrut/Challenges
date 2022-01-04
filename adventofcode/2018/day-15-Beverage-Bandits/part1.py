@@ -21,35 +21,68 @@ def drawmap(map):
     print()
 
 
+def mark_path(renderedmap, path):
+    for node in path:
+        renderedmap[node[0]][node[1]] = 'x'
+    drawmap(renderedmap)
+
+
 def BFS(renderedmap, source, destination) -> list:
     """
     returns path between start and destination
 
     if path is [], no path leads from src to dst.
     """
-    path = []
+
+    # TODO: Optimalizovat, zjistit, proc je to tak pomale.
 
     open = []
     closed = []
-    #TODO: current predelat na list, abych udrzoval tu cestu.
-    open.append(source.coords())
+    open.append([source.coords()])
     while len(open) > 0:
-        current = open.pop(-1)
-        closed.append(current)
+        print(len(open), len(closed))
+        current_path = open.pop(0)
+        exploding_node = current_path[-1]
+        closed.append(current_path)
         
-        neighbour_coords = [(current[0]-1, current[1]), (current[0]+1, current[1]), (current[0], current[1]-1), (current[0], current[1]+1)]
-        for coord in neighbour_coords:
+        adjacent_nodes = [(exploding_node[0]-1, exploding_node[1]), (exploding_node[0]+1, exploding_node[1]), (exploding_node[0], exploding_node[1]-1), (exploding_node[0], exploding_node[1]+1)]
+        
+        for coord in adjacent_nodes:
+            # print(coord, "from", adjacent_nodes)
+            new_path = copy.deepcopy(current_path)
+
             # Check, if some adjacent tile is destination tile.
             if coord[0] == destination.x and coord[1] == destination.y:
-                # add this coord to path and return path
-                # TODO
-                return True
-            
-            # return path
-            if coord not in closed and renderedmap[coord[0]][coord[1]] not in ['#', 'E', 'G']:
-                open.append(coord)
+                new_path.append(coord)
+                return new_path
 
-    return path
+            # Check that new node is not already in current path (looping)
+            if coord in current_path:
+                continue
+            
+            # Check that adjacent node is not Unit or Wall
+            if renderedmap[coord[0]][coord[1]] in ['#', 'E', 'G']:
+                continue
+            
+            # This coord is not already in path, so we can append it to end.
+            new_path.append(coord)
+
+            # Check whether there is not shorter path in open list leading to this adjacent node.
+            for path_in_open in open:
+                if coord == path_in_open[-1] and len(path_in_open) <= len(new_path):
+                    # print("open:", coord, "is equal", path_in_open[-1], "and ", len(path_in_open), "is leq than", len(new_path))
+                    continue
+
+            # Check whether there is not shorter path in closed list leading to this adjacent node.
+            for path_in_closed in closed:
+                if coord == path_in_closed[-1] and len(path_in_closed) < len(new_path):
+                    # print("closed:",coord, "is equal", path_in_closed[-1], "and ", len(path_in_closed), "is less than", len(new_path))
+                    continue
+
+            # Adjacent node (coord) is OK
+            open.append(new_path)
+
+    return []
 
 if __name__ == "__main__":
     # fdata = open("input.txt", 'r')
@@ -92,9 +125,10 @@ if __name__ == "__main__":
     allkilled = False
     turn = 0
     while allkilled is False:
-        print("ee")
-        # Draw entities to the copy of original map
+        # Make a copy of map, to which we will render entities
         rendermap = copy.deepcopy(map)
+        
+        # Draw entities to the copy of original map
         for entity in entities:
             if entity.hp > 0:
                 rendermap[entity.x][entity.y] = entity.c
@@ -109,5 +143,6 @@ if __name__ == "__main__":
     
     print(entities[0])
     print(entities[1])
-    print(BFS(rendermap, entities[0], entities[1]))
+    path = BFS(rendermap, entities[0], entities[5])
+    mark_path(rendermap, path)
     
