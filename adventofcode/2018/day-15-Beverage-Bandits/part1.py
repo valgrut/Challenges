@@ -43,11 +43,16 @@ def BFS(renderedmap, source, destination) -> list:
         print(len(open), len(closed))
         current_path = open.pop(0)
         exploding_node = current_path[-1]
-        closed.append(current_path)
+        # closed.append(current_path)
+        closed.append(exploding_node)
         
         adjacent_nodes = [(exploding_node[0]-1, exploding_node[1]), (exploding_node[0]+1, exploding_node[1]), (exploding_node[0], exploding_node[1]-1), (exploding_node[0], exploding_node[1]+1)]
         
         for coord in adjacent_nodes:
+            # If coord is Visited
+            if coord in closed:
+                continue
+
             # print(coord, "from", adjacent_nodes)
             new_path = copy.deepcopy(current_path)
 
@@ -64,6 +69,8 @@ def BFS(renderedmap, source, destination) -> list:
             if renderedmap[coord[0]][coord[1]] in ['#', 'E', 'G']:
                 continue
             
+            
+
             # This coord is not already in path, so we can append it to end.
             new_path.append(coord)
 
@@ -72,12 +79,12 @@ def BFS(renderedmap, source, destination) -> list:
                 if coord == path_in_open[-1] and len(path_in_open) <= len(new_path):
                     # print("open:", coord, "is equal", path_in_open[-1], "and ", len(path_in_open), "is leq than", len(new_path))
                     continue
-
+            
             # Check whether there is not shorter path in closed list leading to this adjacent node.
-            for path_in_closed in closed:
-                if coord == path_in_closed[-1] and len(path_in_closed) < len(new_path):
+            # for path_in_closed in closed:
+                # if coord == path_in_closed[-1] and len(path_in_closed) < len(new_path):
                     # print("closed:",coord, "is equal", path_in_closed[-1], "and ", len(path_in_closed), "is less than", len(new_path))
-                    continue
+                    # continue
 
             # Adjacent node (coord) is OK
             open.append(new_path)
