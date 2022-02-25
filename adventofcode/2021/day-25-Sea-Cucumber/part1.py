@@ -10,9 +10,8 @@ def print_seafloor(seafloor):
 
 
 if __name__ == "__main__":
-
-    # === Example input ===
-    fdata = open("input1.txt", 'r')
+    # fdata = open("input1.txt", 'r')
+    fdata = open("input.txt", 'r')
     
     seafloor = []
     for row, line in enumerate(fdata):
@@ -26,12 +25,13 @@ if __name__ == "__main__":
     
     steps = 1
     stopped_moving = False
-    while stopped_moving is False and steps < 10:
+    while stopped_moving is False:
         print(f"After {steps} steps:")
         stopped_moving = True
         # Horizontal cucumber movement
         skip_moved = False
         for row in range(0, len(seafloor)):
+            first_was_moved = False
             for col in range(0, len(seafloor[0])):
                 if skip_moved is True:
                     skip_moved = False
@@ -39,20 +39,25 @@ if __name__ == "__main__":
                 if seafloor[row][col] == '>':
                     if col + 1 < len(seafloor[0]):
                         if seafloor[row][col + 1] == '.':
+                            if col == 0:
+                                first_was_moved = True
+
                             seafloor[row][col + 1] = '>'
                             seafloor[row][col] = '.'
                             skip_moved = True
                             stopped_moving = False
                     else:
                         if seafloor[row][0] == '.':
-                            seafloor[row][0] = '>'
-                            seafloor[row][col] = '.'
-                            stopped_moving = False
+                            if first_was_moved is False:
+                                seafloor[row][0] = '>'
+                                seafloor[row][col] = '.'
+                                stopped_moving = False
 
 
         # Vertical cucumber movement
         skip_moved = False
         for col in range(0, len(seafloor[0])):
+            first_was_moved = False
             for row in range(0, len(seafloor)):
                 if skip_moved is True:
                     skip_moved = False
@@ -60,15 +65,18 @@ if __name__ == "__main__":
                 if seafloor[row][col] == 'v':
                     if row + 1 < len(seafloor):
                         if seafloor[row + 1][col] == '.':
+                            if row == 0:
+                                first_was_moved = True
                             seafloor[row + 1][col] = 'v'
                             seafloor[row][col] = '.'
                             skip_moved = True
                             stopped_moving = False
                     else:
                         if seafloor[0][col] == '.':
-                            seafloor[0][col] = 'v'
-                            seafloor[row][col] = '.'
-                            stopped_moving = False
+                            if first_was_moved is False:
+                                seafloor[0][col] = 'v'
+                                seafloor[row][col] = '.'
+                                stopped_moving = False
     
         print_seafloor(seafloor)
         if stopped_moving is False:
