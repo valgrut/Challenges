@@ -117,17 +117,26 @@ def detect_common_points(array1, array2):
 
     # it += 1
 
+def have_12_common(list1, list2):
+    aset = set([tuple(x) for x in list1])
+    bset = set([tuple(x) for x in list2])
+    common_list = np.array([x for x in aset & bset])
+    print(len(common_list), common_list)
+    if len(common_list) >= 6:
+        return True
+    return False
+
 
 def backtracking(arr, transform, depth):
-    if depth > 4:
+    if depth > 5:
         return False
 
     print("depth: ", depth, "transf:", transform)
 
     transformations[transform](arr1)
 
-    # Upravit - hledat 12 spolecnych bodu
-    if (arr1 == arr0).all():
+    # if (arr1 == arr0).all():
+    if have_12_common(arr0, arr1):
         print("FOUND")
         print(arr0)
         print(arr1)
@@ -137,6 +146,9 @@ def backtracking(arr, transform, depth):
         value = backtracking(arr1, tr, depth + 1)
         if value is True:
             return True
+    
+    return False
+        
 
 backtracking(arr1, 0, 0)
 
