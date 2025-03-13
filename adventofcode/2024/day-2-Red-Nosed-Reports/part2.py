@@ -1,73 +1,97 @@
 def checkAscending(report):
-    ignored = 0
     previous = report[0]
-    print("ascending")
-    x = 1
-    while x < len(report):
-        print(report, previous, report[x])
-        current = report[x]
-        
-        if previous > current:
-            print(previous, "is larger than", current)
-            if ignored == 0:
-                ignored += 1
-                previous = current
-                x += 1
-                continue
-            else:
-                return False
-
-        if not (1 <= abs(current - previous) <= 3):
-            print("abs error", previous, current, "results in", abs(previous - current), "∉ (1, 3)")
-            if ignored == 0:
-                ignored += 1
-                # previous = report[x]
-                if x == 1:
-                    previous = report[x]
-                x += 1
-                continue
-            else:
-                return False
-        
+    for x in range(1, len(report)):
+        # print(x, report[x])
+        if previous > report[x] or not (1 <= abs(report[x] - previous) <= 3):
+            # print("ascending!", previous, "is larger than", report[x])
+            return False
         previous = report[x]
-        x += 1
     return True
     
 
 def checkDescending(report):
-    ignored = 0
     previous = report[0]
-    print("descending")
-    x = 1
-    while x < len(report):
-        print(report, previous, report[x])
-        current = report[x]
-        
-        if previous < current:
-            print(previous, "is smaller than", current)
-            if ignored == 0:
-                ignored += 1
-                previous = current
-                x += 1
-                continue
-            else:
-                return False
-        
-        if not (1 <= abs(previous - current) <= 3):
-            print("abs error", previous, current, "results in", abs(previous - current),  "∉ (1, 3)")
-            if ignored == 0:
-                ignored += 1
-                # previous = report[x]
-                if x == 1:
-                    previous = report[x]
-                x += 1
-                continue
-            else:
-                return False
-        
+    for x in range(1, len(report)):
+        # print(x, report[x])
+        if previous < report[x] or not (1 <= abs(previous - report[x]) <= 3):
+            # print("descending!", previous, "is smaller than", report[x])
+            return False
         previous = report[x]
-        x += 1
     return True
+
+
+# Version with ignoring one error, but dropped the effort
+# def checkAscending(report):
+#     ignored = 0
+#     previous = report[0]
+#     print("ascending")
+#     x = 1
+#     while x < len(report):
+#         print(report, previous, report[x])
+#         current = report[x]
+        
+#         if previous > current:
+#             print(previous, "is larger than", current)
+#             if ignored == 0:
+#                 ignored += 1
+#                 previous = current
+#                 x += 1
+#                 continue
+#             else:
+#                 return False
+
+#         if not (1 <= abs(current - previous) <= 3):
+#             print("abs error", previous, current, "results in", abs(previous - current), "∉ (1, 3)")
+#             if ignored == 0:
+#                 ignored += 1
+#                 # previous = report[x]
+#                 if x == 1:
+#                     previous = report[x]
+#                 x += 1
+#                 continue
+#             else:
+#                 return False
+        
+#         previous = report[x]
+#         x += 1
+#     return True
+    
+
+# Version with ignoring one error, but dropped the effort
+# def checkDescending(report):
+#     ignored = 0
+#     previous = report[0]
+#     print("descending")
+#     x = 1
+#     while x < len(report):
+#         print(report, previous, report[x])
+#         current = report[x]
+        
+#         if previous < current:
+#             print(previous, "is smaller than", current)
+#             if ignored == 0:
+#                 ignored += 1
+#                 previous = current
+#                 x += 1
+#                 continue
+#             else:
+#                 return False
+        
+#         if not (1 <= abs(previous - current) <= 3):
+#             print("abs error", previous, current, "results in", abs(previous - current),  "∉ (1, 3)")
+#             if ignored == 0:
+#                 ignored += 1
+#                 # previous = report[x]
+#                 if x == 1:
+#                     previous = report[x]
+#                 x += 1
+#                 continue
+#             else:
+#                 return False
+        
+#         previous = report[x]
+#         x += 1
+#     return True
 
 def isAscending(report):
     score = 0
@@ -98,25 +122,33 @@ def get_safe_reports(report_file):
     safe_reports = 0
     for report in reports:
         if isAscending(report):
-            if checkAscending(report):
-                print(report, "Safe")
-                safe_reports += 1
-            else:
-                print(report, "Unsafe")
+            for k in range(0, len(report)):
+                print("List without ", k, "is ")
+                report_without_nth = report[:k] + report[(k + 1):]
+                if checkAscending(report_without_nth):
+                    print(report_without_nth, "Safe")
+                    safe_reports += 1
+                    break
+                else:
+                    print(report_without_nth, "Unsafe")
         else:
-            if checkDescending(report):
-                print(report, "Safe")
-                safe_reports += 1
-            else:
-                print(report, "Unsafe")
+            for k in range(0, len(report)):
+                print("List without ", k, "is ")
+                report_without_nth = report[:k] + report[(k + 1):]
+                if checkDescending(report_without_nth):
+                    print(report_without_nth, "Safe")
+                    safe_reports += 1
+                    break
+                else:
+                    print(report_without_nth, "Unsafe")
         
         print()
     print("Number of safe reports:", safe_reports)
 
 if __name__ == "__main__":
     # get_safe_reports("example_input.txt")
-    get_safe_reports("input_safe.txt")
+    # get_safe_reports("input_safe.txt")
     # get_safe_reports("input_unsafe.txt")
-    # get_safe_reports("input.txt")
+    get_safe_reports("input.txt")
 
 
